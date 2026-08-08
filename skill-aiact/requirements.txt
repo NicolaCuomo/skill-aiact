@@ -1,0 +1,13 @@
+# skill-aiact Requirements
+# Core dependencies for EU AI Act & AppSec Compliance Engine
+
+# Web Framework (for SME Portal)
+flask>=3.0.0
+
+# Testing
+pytest>=7.4.0
+
+# Optional: For enhanced CLI output
+# rich>=13.0.0
+
+# No heavy external dependencies - uses Python standard library where possible
