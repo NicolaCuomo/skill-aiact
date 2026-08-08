@@ -24,7 +24,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import dataclass, asdict
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, send_file
+from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, send_file, send_from_directory
 import argparse
 
 # ============================================================================
@@ -636,6 +636,12 @@ def employee_detail(employee_id):
 def course():
     """Pagina corso formazione"""
     return render_template('course.html')
+
+@app.route('/data/<path:filename>')
+@app.route('/download/course-material')
+def download_data_file(filename="CORSO_AI_ACT_DIPENDENTI.md"):
+    """Servizio per scaricare i file di dati e materiale didattico"""
+    return send_from_directory('data', filename, as_attachment=True)
 
 @app.route('/course/complete', methods=['POST'])
 def complete_course():

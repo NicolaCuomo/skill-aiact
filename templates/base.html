@@ -259,22 +259,79 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
+        /* Accessibility Themes */
+        body.high-contrast {
+            --background: #000000;
+            --card-bg: #121212;
+            --text: #ffffff;
+            --text-light: #f1f5f9;
+            --border: #475569;
+            --primary: #38bdf8;
+        }
+        body.large-font {
+            font-size: 1.25rem;
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-controls button, .header-controls select {
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="/" class="logo">🛡️ SKILL-IACT</a>
-            <nav>
+            <nav style="display: flex; align-items: center; gap: 1rem;">
                 <a href="/">Dashboard</a>
                 <a href="/employees">Dipendenti</a>
                 <a href="/course">Corso</a>
                 <a href="/questionnaire">Questionario</a>
                 <a href="/scan">Scan</a>
                 <a href="/reports">Report</a>
+                
+                <div class="header-controls">
+                    <select id="langSelector" onchange="changeLanguage(this.value)">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                    </select>
+                    <button onclick="toggleAccessibilityMenu()" title="Accessibilità">♿</button>
+                </div>
             </nav>
         </div>
     </header>
+    
+    <!-- Accessibilità Modal Dropdown -->
+    <div id="a11yMenu" style="display: none; position: fixed; top: 70px; right: 40px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 1000;">
+        <h4 style="margin-bottom: 0.5rem;">♿ Accessibilità</h4>
+        <label style="display: block; margin-bottom: 0.5rem;">
+            <input type="checkbox" id="highContrastToggle" onchange="toggleHighContrast()"> Alto Contrasto 👁️
+        </label>
+        <label style="display: block;">
+            <input type="checkbox" id="largeFontToggle" onchange="toggleLargeFont()"> Testo Grande 🔠
+        </label>
+    </div>
+    
+    <!-- Employee Copy Link Modal Popup -->
+    <div id="copyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 2000;">
+        <div style="background: var(--card-bg); padding: 2rem; border-radius: 0.75rem; max-width: 450px; width: 90%; text-align: center;">
+            <h3>📋 Link Dipendente Creato!</h3>
+            <p style="margin: 1rem 0; color: var(--text-light);">Copia questo link e invialo al dipendente per accedere direttamente al corso e al questionario:</p>
+            <input type="text" id="copyModalInput" readonly style="margin-bottom: 1rem; text-align: center;">
+            <button onclick="copyModalLink()" class="btn btn-success" style="width: 100%; margin-bottom: 0.5rem;">📋 Copia Link</button>
+            <button onclick="closeCopyModal()" class="btn btn-secondary" style="width: 100%;">Chiudi</button>
+        </div>
+    </div>
     
     <main class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -288,9 +345,35 @@
         {% block content %}{% endblock %}
     </main>
     
-    <footer style="text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.875rem;">
-        <p>© 2024 SKILL-IACT | Antigravity Night Powered by Nicola Cuomo</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Created by Qwen (Alibaba Cloud) & Nicola Cuomo | ⚠️ Not legal certification - AI research tool</p>
-    </footer>
+    <script>
+        function toggleAccessibilityMenu() {
+            const menu = document.getElementById('a11yMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+        function toggleLargeFont() {
+            document.body.classList.toggle('large-font');
+        }
+        function changeLanguage(lang) {
+            console.log("Lingua impostata a:", lang);
+        }
+        function showCopyModal(link) {
+            const modal = document.getElementById('copyModal');
+            const input = document.getElementById('copyModalInput');
+            input.value = window.location.origin + link;
+            modal.style.display = 'flex';
+        }
+        function closeCopyModal() {
+            document.getElementById('copyModal').style.display = 'none';
+        }
+        function copyModalLink() {
+            const input = document.getElementById('copyModalInput');
+            input.select();
+            navigator.clipboard.writeText(input.value);
+            alert("📋 Link copiato negli appunti!");
+        }
+    </script>
 </body>
 </html>

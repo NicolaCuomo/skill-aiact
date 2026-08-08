@@ -50,6 +50,9 @@
                         <a href="/employee/{{ emp.id }}" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;">
                             📋 Dettagli
                         </a>
+                        <button onclick="showCopyModal('/questionnaire?employee_id={{ emp.id }}')" class="btn btn-success" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;">
+                            📋 Copia Link
+                        </button>
                     </td>
                 </tr>
                 {% endfor %}

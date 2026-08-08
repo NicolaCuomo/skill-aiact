@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skill-aiact",
+  "version": "2.0.0",
+  "description": "The Vibe-Coder's Safety Net: Automated AppSec & EU AI Act Audit Kit for AI Agents",
+  "author": "Nicola Cuomo & Qwen (Alibaba Cloud)",
+  "homepage": "https://github.com/NicolaCuomo/skill-aiact",
+  "repository": "https://github.com/NicolaCuomo/skill-aiact.git",
+  "license": "MIT",
+  "keywords": [
+    "ai-act",
+    "appsec",
+    "compliance",
+    "security",
+    "owasp",
+    "agent-skill"
+  ]
+}
