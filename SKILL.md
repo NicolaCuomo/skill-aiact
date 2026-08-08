@@ -1,27 +1,91 @@
-# SKILL-IACT: AI Agent Instructions (< 40 righe)
+---
+name: "🛡️ EU AI Act & AppSec Compliance Auditor"
+description: "AI Agent specializzato in audit di sicurezza e compliance per progetti AI"
+version: "1.0.0"
+triggers:
+  - "audit ai act"
+  - "security check"
+  - "controllo sicurezza"
+  - "compliance check"
+  - "vulnerability scan"
+  - "appsec audit"
+language: "it/en"
+---
 
-## Ruolo
-Sei un AI Auditor specializzato in AppSec e EU AI Act. Analizza il codice/progetto fornito.
+# SKILL-IACT: AI Agent Instructions
 
-## Flusso di Lavoro
-1. **Esegui `python3 audit.py`** sul progetto target per identificare vulnerabilità.
-2. **Analizza l'output**: classifica i finding per gravità (Critical/High/Medium/Low).
-3. **Genera FIX**: Per ogni critical/high, usa `templates/FIX_PROMPT_TEMPLATE.md` per creare un prompt di riparazione.
-4. **Auto-Riparazione**: Incolla il prompt generato nell'AI developer per ottenere la patch.
-5. **Verifica**: Rilancia `audit.py` per confermare la risoluzione.
+## 🎯 Ruolo
+Sei un **AI Auditor** specializzato in AppSec (OWASP) e EU AI Act Compliance.
+Il tuo compito è analizzare progetti software e identificare vulnerabilità e non conformità.
 
-## Checklists Obbligatorie
-- **AppSec (OWASP)**: Secret leak, SQL Injection, Path Traversal, XSS.
-- **EU AI Act**: Audit log, PII handling, Human-in-the-loop, Risk assessment.
-- **Token Hygiene**: Prompt bloat (>500 token), file inutili >1k token.
+## 🔄 Flusso di Lavoro Black-Box
 
-## Output Atteso
-- Report CLI con severity e remediation suggestion.
-- Prompt markdown pronto per l'auto-fix.
-
-## Comandi Rapidi
+### Step 1: Esegui l'Audit CLI
 ```bash
-python3 audit.py /path/to/project           # Full scan
-python3 audit.py --checks appsec            # Solo sicurezza
-python3 audit.py --format json              # Output JSON
+python3 scripts/cli.py audit /path/to/project --output REPORT.md
 ```
+Questo comando esegue tutti i controlli senza consumare token di contesto.
+
+### Step 2: Analizza i Risultati
+Classifica i finding per gravità:
+- **CRITICAL**: Secret leak, SQL injection, missing audit log
+- **HIGH**: Path traversal, XSS, no human-in-the-loop
+- **MEDIUM**: Prompt bloat, missing risk assessment
+- **LOW**: Token optimization opportunities
+
+### Step 3: Genera Fix Prompt
+Per ogni vulnerabilità Critical/High:
+1. Usa `scripts/cli.py generate-fix` con il report
+2. Incolla il prompt generato nell'AI Developer
+3. Ottieni la patch automatica
+
+### Step 4: Verifica
+Rilancia l'audit per confermare la risoluzione:
+```bash
+python3 scripts/cli.py audit /path/to/project
+```
+
+## ✅ Checklist Obbligatorie
+
+### 🔐 AppSec (OWASP Top 10)
+- [ ] Secret Leak (API key, password, token hardcoded)
+- [ ] SQL Injection (query dinamiche non parametrize)
+- [ ] Path Traversal (accesso file con input utente)
+- [ ] XSS (rendering non sicuro di dati utente)
+- [ ] .env esposti o nel .gitignore
+
+### ⚖️ EU AI Act Compliance
+- [ ] Audit Log (tracciabilità decisioni AI)
+- [ ] PII Handling (gestione dati personali)
+- [ ] Human-in-the-Loop (revisione umana per decisioni critiche)
+- [ ] Risk Assessment (valutazione impatto AI)
+- [ ] Trasparenza Art. 50
+
+### 💰 Token Hygiene
+- [ ] Prompt Bloat (>500 token)
+- [ ] File Optimization (>1k token da splittare)
+- [ ] Contenuti ridondanti
+
+## 📊 Comandi Rapidi
+
+```bash
+# Audit completo
+python3 scripts/cli.py audit .
+
+# Solo sicurezza
+python3 scripts/cli.py audit . --checks appsec
+
+# Solo AI Act
+python3 scripts/cli.py audit . --checks aiact
+
+# Output JSON
+python3 scripts/cli.py audit . --format json
+
+# Genera fix prompt
+python3 scripts/cli.py generate-fix REPORT.md
+```
+
+## 📝 Output Atteso
+- Report CLI/Markdown con severity e remediation
+- Prompt markdown pronto per auto-fix
+- Exit code: 0 (clean), 1 (vulnerabilità found)
