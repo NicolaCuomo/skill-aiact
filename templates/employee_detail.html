@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1>👤 {{ employee.name }}</h1>
+    <a href="/employees" class="btn btn-secondary">↩️ Torna alla Lista</a>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Email</h3>
+        <div class="value" style="font-size: 1.25rem;">{{ employee.email }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Dipartimento</h3>
+        <div class="value" style="font-size: 1.25rem;">{{ employee.department }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Corso AI Act</h3>
+        <div class="value" style="font-size: 1.25rem;">
+            {% if employee.course_completed %}
+                ✅ Completato ({{ employee.course_score }}/5)
+            {% else %}
+                ⏳ Da completare
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Questionario PMI</h3>
+        <div class="value" style="font-size: 1.25rem;">
+            {% if employee.questionnaire_completed %}
+                ✅ Completato
+            {% else %}
+                ⏳ Da completare
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        🎯 Azioni per questo Dipendente
+    </div>
+    <div class="card-body">
+        {% if not employee.course_completed %}
+        <form method="POST" action="/course/complete" style="display: inline-block; margin-right: 1rem;">
+            <input type="hidden" name="employee_id" value="{{ employee.id }}">
+            <input type="hidden" name="score" value="5">
+            <button type="submit" class="btn btn-success">✅ Segna Corso come Completato</button>
+        </form>
+        {% endif %}
+        
+        {% if not employee.questionnaire_completed %}
+        <a href="/questionnaire?employee_id={{ employee.id }}" class="btn btn-warning">📋 Avvia Questionario</a>
+        {% endif %}
+        
+        <a href="/scan?employee_id={{ employee.id }}" class="btn">🔍 Esegui Scan Progetto</a>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        📊 Storico Scan ({{ scans|length }})
+    </div>
+    <div class="card-body">
+        {% if scans %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tipo</th>
+                    <th>Punteggio</th>
+                    <th>Critici</th>
+                    <th>Alti</th>
+                    <th>Medi</th>
+                    <th>Bassi</th>
+                    <th>Dettagli</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for scan in scans %}
+                <tr>
+                    <td>{{ scan.scan_date[:16] if scan.scan_date else '-' }}</td>
+                    <td>
+                        {% if scan.scan_type == 'full' %}
+                            🔍 Completo
+                        {% elif scan.scan_type == 'appsec' %}
+                            🔐 AppSec
+                        {% else %}
+                            🇪🇺 AI Act
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% set score = scan.score %}
+                        {% if score >= 80 %}
+                            <span class="badge badge-success">{{ score }}/100</span>
+                        {% elif score >= 60 %}
+                            <span class="badge badge-warning">{{ score }}/100</span>
+                        {% else %}
+                            <span class="badge badge-danger">{{ score }}/100</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ scan.critical_issues or 0 }}</td>
+                    <td>{{ scan.high_issues or 0 }}</td>
+                    <td>{{ scan.medium_issues or 0 }}</td>
+                    <td>{{ scan.low_issues or 0 }}</td>
+                    <td>
+                        <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" 
+                                onclick="alert('{{ scan.details | escape }}')">
+                            📄 Vedi
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p style="color: var(--text-light); text-align: center; padding: 2rem;">
+            Nessuno scan effettuato. <a href="/scan?employee_id={{ employee.id }}">Esegui il primo scan!</a>
+        </p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        📈 Progresso Formazione
+    </div>
+    <div class="card-body">
+        <div style="display: flex; align-items: center; justify-content: space-around;">
+            <div style="text-align: center;">
+                <div class="score-circle" style="--score: {{ (employee.course_score / 5 * 100) if employee.course_score else 0 }};">
+                    <div class="score-inner">
+                        {{ employee.course_score }}/5
+                    </div>
+                </div>
+                <p><strong>Punteggio Corso</strong></p>
+            </div>
+            
+            <div style="text-align: center;">
+                <div class="score-circle" style="--score: {{ 100 if employee.questionnaire_completed else 0 }};">
+                    <div class="score-inner">
+                        {% if employee.questionnaire_completed %}✅{% else %}⏳{% endif %}
+                    </div>
+                </div>
+                <p><strong>Questionario</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

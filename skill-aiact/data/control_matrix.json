@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "document_type": "control_matrix",
+    "version": "1.0.0",
+    "last_updated": "2026-08-08",
+    "ai_act_version": "Regulation (EU) 2024/1689 as amended by Regulation (EU) 2026/1744",
+    "owner": "skill-aiact Compliance Team",
+    "disclaimer": "This matrix provides technical controls for readiness assessment. It does NOT constitute legal certification or guarantee of compliance."
+  },
+  "controls": [
+    {
+      "control_id": "AIACT-ART04-001",
+      "title": "AI Literacy Measures",
+      "article": "4",
+      "provision": "Providers and deployers shall adopt measures to ensure, to their best extent, a sufficient level of AI literacy of their personnel and other persons dealing with the operation and use of AI systems on their behalf.",
+      "claim": "Organization has implemented AI literacy measures for personnel using AI systems",
+      "applicability": {
+        "subjects": ["PROVIDER", "DEPLOYER"],
+        "condition": "Personnel who operate or use AI systems on behalf of the organization",
+        "risk_level": "MINIMAL_RISK",
+        "context_dependent": true,
+        "context_factors": ["role", "experience", "training", "use_case_context"]
+      },
+      "enforcement_date": "2025-02-02",
+      "source_type": "LEGAL_REQUIREMENT",
+      "primary_source": "SRC-001",
+      "official_guidance": "OFF-002",
+      "evidence_required": [
+        "AI system inventory identifying personnel who use AI",
+        "Training policy or procedure document",
+        "Training records (attendance, completion certificates)",
+        "Employee acknowledgment of AI usage policies"
+      ],
+      "product_evidence": [
+        "CORSO_AI_ACT_DIPENDENTI.md completion records",
+        "Quiz scores and timestamps",
+        "Training attendance log in SQLite database"
+      ],
+      "pmi_question": "I dipendenti che utilizzano sistemi AI hanno ricevuto formazione specifica sul caso d'uso?",
+      "quiz_questions": [
+        "Quali dati NON devi mai inserire su ChatGPT o altre AI pubbliche?",
+        "Quando devi informare un cliente che sta interagendo con un'AI?",
+        "Cosa fare se un'AI produce un risultato che sembra errato o discriminatorio?"
+      ],
+      "automatic_check": "PARTIAL",
+      "check_description": "Verify presence of training completion records in database and policy documents",
+      "readiness_states": {
+        "EVIDENCE_PRESENT": "Training records exist for all identified personnel",
+        "EVIDENCE_INCOMPLETE": "Some personnel lack training records",
+        "POTENTIAL_GAP": "No training program identified"
+      },
+      "remediation": "Assign CORSI_AI_ACT_DIPENDENTI.md module to relevant departments and track completion",
+      "standard_mapping": {
+        "ISO_42001": "Clause 7.3 - Awareness",
+        "ISO_27001": "Clause 7.2.2 - Awareness, education and training",
+        "NIST_AI_RMF": "MAP function - AI literacy development"
+      },
+      "software_limitations": "Cannot verify actual comprehension or quality of training; only tracks completion evidence",
+      "legal_disclaimer": "Training attests effort toward AI literacy but does NOT constitute legal certification of compliance with Art. 4"
+    },
+    {
+      "control_id": "AIACT-ART05-001",
+      "title": "Prohibition of Manipulative AI Practices",
+      "article": "5(1)(a)",
+      "provision": "The placing on the market, putting into service or use of an AI system that deploys subliminal techniques beyond a person's consciousness is prohibited.",
+      "claim": "Organization does not use AI systems with subliminal manipulative techniques",
+      "applicability": {
+        "subjects": ["PROVIDER", "DEPLOYER", "IMPORTER", "DISTRIBUTOR"],
+        "condition": "All AI systems",
+        "risk_level": "UNACCEPTABLE_RISK",
+        "context_dependent": false
+      },
+      "enforcement_date": "2025-02-02",
+      "source_type": "LEGAL_PROHIBITION",
+      "primary_source": "SRC-001",
+      "official_guidance": "OFF-004",
+      "evidence_required": [
+        "AI system inventory with intended purpose documentation",
+        "Technical review confirming absence of subliminal techniques",
+        "Vendor declarations for third-party AI systems"
+      ],
+      "product_evidence": [
+        "QUESTIONARIO_AUTOVALUTAZIONE_PMI.md screening questions",
+        "AI system inventory records"
+      ],
+      "pmi_question": "Il sistema AI utilizza tecniche che agiscono oltre la coscienza dell'utente (es. stimoli subliminali)?",
+      "automatic_check": "MANUAL_REVIEW_REQUIRED",
+      "check_description": "Requires human review of AI system functionality and intended purpose",
+      "readiness_states": {
+        "NO_PROHIBITED_PRACTICES": "Inventory confirms no prohibited uses",
+        "REVIEW_REQUIRED": "Unclear functionality requires legal/technical assessment",
+        "POTENTIAL_VIOLATION": "Indicators of prohibited practices detected"
+      },
+      "remediation": "Immediately cease use of any AI system employing subliminal techniques; consult legal counsel",
+      "software_limitations": "Automated scanning cannot detect subliminal techniques; requires human expert review",
+      "legal_disclaimer": "This is a legal prohibition. Violation may result in fines up to EUR 35M or 7% global turnover."
+    },
+    {
+      "control_id": "AIACT-ART05-002",
+      "title": "Prohibition of Social Scoring",
+      "article": "5(1)(c)",
+      "provision": "The use of AI systems by public authorities or on their behalf for social scoring is prohibited.",
+      "claim": "Organization does not engage in social scoring practices",
+      "applicability": {
+        "subjects": ["PROVIDER", "DEPLOYER"],
+        "condition": "Especially relevant for organizations contracting with public authorities",
+        "risk_level": "UNACCEPTABLE_RISK",
+        "context_dependent": true,
+        "context_factors": ["public_authority_involvement", "scoring_purpose", "detriment_to_individuals"]
+      },
+      "enforcement_date": "2025-02-02",
+      "source_type": "LEGAL_PROHIBITION",
+      "primary_source": "SRC-001",
+      "official_guidance": "OFF-004",
+      "evidence_required": [
+        "AI system inventory with use case documentation",
+        "Assessment of whether any system performs social scoring",
+        "Public authority contract review (if applicable)"
+      ],
+      "product_evidence": [
+        "QUESTIONARIO_AUTOVALUTAZIONE_PMI.md screening questions"
+      ],
+      "pmi_question": "Il sistema valuta o classifica persone in base al comportamento sociale, status economico, o caratteristiche personali?",
+      "automatic_check": "MANUAL_REVIEW_REQUIRED",
+      "check_description": "Requires assessment of AI system outputs and decision criteria",
+      "readiness_states": {
+        "NO_SOCIAL_SCORING": "No social scoring systems identified",
+        "REVIEW_REQUIRED": "Scoring system exists but purpose unclear",
+        "POTENTIAL_VIOLATION": "Social scoring indicators detected"
+      },
+      "remediation": "Cease any social scoring activities; redesign system to avoid prohibited classification",
+      "software_limitations": "Cannot automatically determine if scoring constitutes 'social scoring' under Art. 5",
+      "legal_disclaimer": "Social scoring prohibition carries highest penalties. Seek legal counsel if uncertain."
+    },
+    {
+      "control_id": "AIACT-ART50-001",
+      "title": "Transparency for AI Interaction Disclosure",
+      "article": "50(1)",
+      "provision": "Providers shall design and develop AI systems in such a way that natural persons are informed when they are interacting with an AI system, unless this is obvious from the circumstances.",
+      "claim": "AI systems clearly disclose their artificial nature to users",
+      "applicability": {
+        "subjects": ["PROVIDER"],
+        "deployer_obligation": "Art. 26 - Deployers must ensure transparency when using high-risk AI",
+        "condition": "AI systems designed to interact directly with natural persons",
+        "risk_level": "TRANSPARENCY_OBLIGATION",
+        "context_dependent": true,
+        "exception": "When interaction is obvious from circumstances"
+      },
+      "enforcement_date": "2026-08-02",
+      "source_type": "LEGAL_REQUIREMENT",
+      "primary_source": "SRC-001",
+      "official_guidance": "OFF-007",
+      "evidence_required": [
+        "UI/UX design documentation showing disclosure mechanisms",
+        "Sample user interactions demonstrating AI disclosure",
+        "Chatbot greeting scripts including AI identification"
+      ],
+      "product_evidence": [
+        "Code scan for disclosure strings in chatbot interfaces",
+        "Screenshot evidence repository"
+      ],
+      "pmi_question": "Gli utenti sono informati quando stanno interagendo con un'AI invece che con una persona?",
+      "automatic_check": "PARTIAL",
+      "check_description": "Scan code for common disclosure patterns; manual UI review required",
+      "readiness_states": {
+        "DISCLOSURE_PRESENT": "Clear AI disclosure visible in user interface",
+        "DISCLOSURE_INADEQUATE": "Disclosure present but unclear or hidden",
+        "NO_DISCLOSURE": "No AI disclosure mechanism found"
+      },
+      "remediation": "Implement clear disclosure at beginning of interaction: 'I am an AI assistant...'",
+      "standard_mapping": {
+        "ISO_42001": "Clause 8.1 - Operational planning and control",
+        "NIST_AI_RMF": "GOV function - Transparency policies"
+      },
+      "software_limitations": "Cannot evaluate UX quality or whether disclosure is 'obvious from circumstances'",
+      "legal_disclaimer": "Transparency violations may result in fines up to EUR 7.5M or 1% global turnover"
+    },
+    {
+      "control_id": "AIACT-ART50-002",
+      "title": "Deepfake Labeling Requirement",
+      "article": "50(2)",
+      "provision": "Providers of AI systems generating synthetic audio, image, video or text content shall apply machine-readable markers indicating artificial generation.",
+      "claim": "AI-generated content (deepfakes) is properly labeled with machine-readable markers",
+      "applicability": {
+        "subjects": ["PROVIDER"],
+        "deployer_obligation": "Deployers should preserve markers when possible",
+        "condition": "AI systems generating synthetic media (audio, image, video, text)",
+        "risk_level": "TRANSPARENCY_OBLIGATION",
+        "exceptions": ["Artistic works (with disclosure)", "Law enforcement operations"]
+      },
+      "enforcement_date": "2026-08-02",
+      "source_type": "LEGAL_REQUIREMENT",
+      "primary_source": "SRC-001",
+      "official_guidance": "OFF-007",
+      "evidence_required": [
+        "Technical implementation of C2PA or similar watermarking standard",
+        "Metadata preservation in generated content",
+        "Process for maintaining markers through content lifecycle"
+      ],
+      "product_evidence": [
+        "Code scan for watermarking libraries",
+        "Sample generated files with metadata analysis"
+      ],
+      "pmi_question": "I contenuti generati dall'AI (immagini, video, audio, testo) includono marcatori leggibili che indicano l'origine artificiale?",
+      "automatic_check": "PARTIAL",
+      "check_description": "Check for presence of watermarking libraries; analyze sample output metadata",
+      "readiness_states": {
+        "MARKERS_PRESENT": "Machine-readable markers detected in output",
+        "MARKERS_ABSENT": "No markers found in generated content",
+        "UNCLEAR": "Unable to determine marker presence automatically"
+      },
+      "remediation": "Implement C2PA standard or equivalent machine-readable watermarking",
+      "software_limitations": "Cannot verify marker robustness against removal attempts",
+      "legal_disclaimer": "Deepfake labeling is mandatory for most commercial uses since 2 August 2026"
+    },
+    {
+      "control_id": "APPSEC-001",
+      "title": "Secret Leak Detection",
+      "article": "N/A - AppSec Best Practice",
+      "provision": "API keys, passwords, and credentials must not be hardcoded in source code",
+      "claim": "No secrets or credentials are exposed in source code",
+      "applicability": {
+        "subjects": ["ALL_ORGANIZATIONS"],
+        "condition": "All software projects",
+        "risk_level": "HIGH_SECURITY_RISK",
+        "context_dependent": false
+      },
+      "source_type": "SECURITY_BEST_PRACTICE",
+      "primary_source": "SEC-001",
+      "evidence_required": [
+        ".gitignore includes .env files",
+        "No hardcoded API keys in source",
+        "Environment variable usage for credentials"
+      ],
+      "product_evidence": [
+        "audit.py scan results",
+        "checks/appsec_owasp.py findings"
+      ],
+      "automatic_check": "FULL",
+      "check_description": "Regex-based scanning for secret patterns (sk-, Bearer, password=, etc.)",
+      "readiness_states": {
+        "NO_SECRETS_FOUND": "Scan completed with no secrets detected",
+        "SECRETS_FOUND": "Potential secrets detected requiring review",
+        "SCAN_ERROR": "Unable to complete scan"
+      },
+      "remediation": "Move secrets to environment variables; add .env to .gitignore; rotate exposed credentials",
+      "standard_mapping": {
+        "ISO_27001": "Annex A.9 - Access Control",
+        "OWASP_LLM_TOP10": "LLM01 - Prompt Injection, LLM06 - Sensitive Information Disclosure"
+      },
+      "legal_disclaimer": "This is a security best practice, not a direct AI Act requirement. However, Art. 15 cybersecurity obligations may apply to high-risk systems."
+    },
+    {
+      "control_id": "APPSEC-002",
+      "title": "SQL Injection Prevention",
+      "article": "N/A - AppSec Best Practice",
+      "provision": "Database queries must use parameterized statements to prevent SQL injection",
+      "claim": "Application uses safe query patterns without string concatenation vulnerabilities",
+      "applicability": {
+        "subjects": ["ALL_ORGANIZATIONS"],
+        "condition": "Applications using SQL databases",
+        "risk_level": "CRITICAL_SECURITY_RISK",
+        "context_dependent": false
+      },
+      "source_type": "SECURITY_BEST_PRACTICE",
+      "primary_source": "SEC-001",
+      "evidence_required": [
+        "Use of parameterized queries or ORM",
+        "No string concatenation in SQL statements"
+      ],
+      "product_evidence": [
+        "audit.py scan results",
+        "checks/appsec_owasp.py findings"
+      ],
+      "automatic_check": "PARTIAL",
+      "check_description": "Pattern detection for unsafe query construction",
+      "readiness_states": {
+        "SAFE_PATTERNS": "Parameterized queries detected",
+        "UNSAFE_PATTERNS": "String concatenation in SQL detected",
+        "UNCLEAR": "Unable to determine query safety"
+      },
+      "remediation": "Replace string concatenation with parameterized queries or prepared statements",
+      "legal_disclaimer": "Critical for Art. 15 cybersecurity compliance in high-risk systems"
+    }
+  ],
+  "risk_classification_engine": {
+    "prohibited_practices": {
+      "risk_level": "UNACCEPTABLE",
+      "action": "IMMEDIATE_CEASE_AND_DESIST",
+      "fine_range": "EUR 35M or 7% global turnover"
+    },
+    "high_risk_annex_iii": {
+      "risk_level": "HIGH",
+      "action": "FULL_COMPLIANCE_PROGRAM_REQUIRED",
+      "requirements": ["Arts. 9-15", "Conformity Assessment", "Post-Market Monitoring"],
+      "fine_range": "EUR 15M or 3% global turnover"
+    },
+    "transparency_obligations": {
+      "risk_level": "MEDIUM",
+      "action": "IMPLEMENT_DISCLOSURE_MECHANISMS",
+      "fine_range": "EUR 7.5M or 1% global turnover"
+    },
+    "minimal_risk": {
+      "risk_level": "LOW",
+      "action": "VOLUNTARY_CODES_OF_CONDUCT_ENCOURAGED",
+      "requirements": []
+    }
+  },
+  "evidence_vault_structure": {
+    "ai_system_inventory": {
+      "fields": ["system_name", "provider", "version", "intended_purpose", "users", "affected_persons", "risk_classification"],
+      "format": "JSON or database table"
+    },
+    "training_records": {
+      "fields": ["employee_id", "course_id", "completion_date", "score", "acknowledgment"],
+      "format": "SQLite database"
+    },
+    "risk_assessment": {
+      "fields": ["system_id", "risk_category", "assessment_date", "assessor", "mitigations"],
+      "format": "Document + structured data"
+    },
+    "incident_register": {
+      "fields": ["incident_id", "system_id", "date", "severity", "description", "corrective_action", "notification_status"],
+      "format": "Log file or database"
+    }
+  }
+}

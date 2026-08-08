@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "document_type": "sources_registry",
+    "version": "1.0.0",
+    "last_updated": "2026-08-08",
+    "next_review": "2026-09-08",
+    "owner": "skill-aiact Compliance Team"
+  },
+  "sources": [
+    {
+      "source_id": "SRC-001",
+      "title": "Regulation (EU) 2024/1689 - Artificial Intelligence Act",
+      "celex": "32024R1689",
+      "eli": "http://data.europa.eu/eli/reg/2024/1689/oj",
+      "consolidated_eli": "http://data.europa.eu/eli/reg/2024/1689/2026-07-27/eng",
+      "type": "REGULATION",
+      "status": "BINDING",
+      "legal_effect": "Directly applicable in all EU Member States",
+      "entry_into_force": "2024-08-01",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30,
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+      "consolidated_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng",
+      "key_articles": ["3", "4", "5", "6", "9", "10", "11", "12", "13", "14", "15", "26", "50", "73"],
+      "annexes": ["I", "III", "IV"]
+    },
+    {
+      "source_id": "SRC-002",
+      "title": "Regulation (EU) 2026/1744 - Digital Omnibus",
+      "celex": "32026R1744",
+      "eli": "http://data.europa.eu/eli/reg/2026/1744/oj",
+      "type": "REGULATION_AMENDING",
+      "status": "BINDING",
+      "legal_effect": "Amends timelines and provisions of Regulation 2024/1689",
+      "entry_into_force": "2026-07-27",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30,
+      "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng",
+      "key_modifications": ["Art. 4 AI Literacy simplified", "Annex III delayed to 2027-12-02", "Annex I delayed to 2028-08-02"]
+    },
+    {
+      "source_id": "OFF-001",
+      "title": "AI Act Regulatory Framework Overview",
+      "publisher": "European Commission - DG CONNECT",
+      "type": "OFFICIAL_PORTAL",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Interpretative guidance, not binding",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "last_verified": "2026-08-08",
+      "ttl_days": 14
+    },
+    {
+      "source_id": "OFF-002",
+      "title": "AI Literacy Questions & Answers",
+      "publisher": "European Commission",
+      "type": "OFFICIAL_GUIDANCE",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Clarifies Art. 4 implementation expectations",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30,
+      "key_points": [
+        "No uniform competency level imposed on individuals",
+        "Context-dependent measures based on role, experience, use case",
+        "Replicating repository practices does not create automatic presumption of conformity"
+      ]
+    },
+    {
+      "source_id": "OFF-003",
+      "title": "Guidelines on the definition of an AI system",
+      "publisher": "European Commission",
+      "type": "OFFICIAL_GUIDANCE",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Interpretative guidance for Art. 3(1)",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "OFF-004",
+      "title": "Guidelines on prohibited AI practices under Article 5",
+      "publisher": "European Commission",
+      "type": "OFFICIAL_GUIDANCE",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Interpretative guidance for Art. 5 enforcement",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "OFF-005",
+      "title": "Guidelines on high-risk AI systems classification",
+      "publisher": "European Commission",
+      "type": "OFFICIAL_GUIDANCE",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Interpretative guidance for Art. 6 + Annex III",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/guidelines-ai-high-risk-systems",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "OFF-006",
+      "title": "General-Purpose AI Code of Practice",
+      "publisher": "European Commission / AI Board",
+      "type": "CODE_OF_PRACTICE",
+      "status": "VOLUNTARY_BEST_PRACTICE",
+      "legal_effect": "Voluntary but may demonstrate adequacy for GPAI obligations",
+      "applicable_from": "2025-08-02",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/general-purpose-ai-code-practice",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "OFF-007",
+      "title": "Code of Practice on Transparency of AI-Generated Content",
+      "publisher": "European Commission / AI Board",
+      "type": "CODE_OF_PRACTICE",
+      "status": "VOLUNTARY_BEST_PRACTICE",
+      "legal_effect": "Voluntary but confirmed as adequate for Art. 50 transparency",
+      "applicable_from": "2026-08-02",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-transparency-ai-generated-content",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "OFF-008",
+      "title": "Living Repository of AI Literacy Practices",
+      "publisher": "European Commission",
+      "type": "REPOSITORY",
+      "status": "ONGOING",
+      "legal_effect": "Examples only; replication does not create automatic conformity",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/living-repository-foster-learning-and-exchange-ai-literacy",
+      "last_verified": "2026-08-08",
+      "ttl_days": 14
+    },
+    {
+      "source_id": "OFF-009",
+      "title": "AI Act Standardisation Guidance",
+      "publisher": "European Commission",
+      "type": "GUIDANCE",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Explains relationship between harmonised standards and AI Act",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-act-standardisation",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "GDPR-001",
+      "title": "Regulation (EU) 2016/679 - General Data Protection Regulation",
+      "celex": "32016R0679",
+      "type": "REGULATION",
+      "status": "BINDING",
+      "legal_effect": "Directly applicable data protection law",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "last_verified": "2026-08-08",
+      "ttl_days": 90,
+      "note": "AI Act does NOT replace GDPR. Both apply concurrently where personal data is processed."
+    },
+    {
+      "source_id": "EDPB-001",
+      "title": "Opinion 28/2024 on processing of personal data in the context of AI models",
+      "publisher": "European Data Protection Board (EDPB)",
+      "type": "OPINION",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Interpretative guidance on GDPR in AI context",
+      "url": "https://www.edpb.europa.eu/our-work-tools/our-documents/opinions/opinion-282024-processing-personal-data-context-ai-models_en",
+      "last_verified": "2026-08-08",
+      "ttl_days": 60
+    },
+    {
+      "source_id": "EDPB-002",
+      "title": "AI Privacy Risks & Mitigations - Large Language Models",
+      "publisher": "European Data Protection Board (EDPB)",
+      "type": "REPORT",
+      "status": "OFFICIAL_FINAL",
+      "legal_effect": "Best practice guidance for GDPR compliance in LLM contexts",
+      "url": "https://www.edpb.europa.eu/our-work-tools/our-documents/reports/ai-privacy-risks-mitigations-large-language-models_en",
+      "last_verified": "2026-08-08",
+      "ttl_days": 60
+    },
+    {
+      "source_id": "STD-001",
+      "title": "ISO/IEC 42001:2023 - Artificial Intelligence Management System",
+      "publisher": "ISO/IEC",
+      "type": "INTERNATIONAL_STANDARD",
+      "status": "VOLUNTARY_STANDARD",
+      "legal_effect": "Not legally binding; may support AI Act compliance evidence",
+      "url": "https://www.iso.org/standard/81230.html",
+      "last_verified": "2026-08-08",
+      "ttl_days": 90,
+      "mapping_note": "ISO 42001 provides management system framework but does NOT automatically ensure AI Act compliance."
+    },
+    {
+      "source_id": "STD-002",
+      "title": "ISO/IEC 27001:2022 - Information Security Management",
+      "publisher": "ISO/IEC",
+      "type": "INTERNATIONAL_STANDARD",
+      "status": "VOLUNTARY_STANDARD",
+      "legal_effect": "Not legally binding; supports cybersecurity requirements",
+      "url": "https://www.iso.org/standard/27001",
+      "last_verified": "2026-08-08",
+      "ttl_days": 90
+    },
+    {
+      "source_id": "STD-003",
+      "title": "ISO/IEC 27701:2019 - Privacy Information Management",
+      "publisher": "ISO/IEC",
+      "type": "INTERNATIONAL_STANDARD",
+      "status": "VOLUNTARY_STANDARD",
+      "legal_effect": "Not legally binding; supports GDPR evidence",
+      "url": "https://www.iso.org/standard/27701",
+      "last_verified": "2026-08-08",
+      "ttl_days": 90
+    },
+    {
+      "source_id": "STD-004",
+      "title": "NIST AI RMF 1.0 - Artificial Intelligence Risk Management Framework",
+      "publisher": "NIST",
+      "type": "FRAMEWORK",
+      "status": "VOLUNTARY_FRAMEWORK",
+      "legal_effect": "US framework; informative only for EU AI Act",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "last_verified": "2026-08-08",
+      "ttl_days": 90
+    },
+    {
+      "source_id": "SEC-001",
+      "title": "OWASP Top 10 for Large Language Model Applications",
+      "publisher": "OWASP Foundation",
+      "type": "SECURITY_GUIDANCE",
+      "status": "COMMUNITY_STANDARD",
+      "legal_effect": "Best practice; not legally binding",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "last_verified": "2026-08-08",
+      "ttl_days": 60
+    },
+    {
+      "source_id": "SEC-002",
+      "title": "OWASP Agentic AI Security Guidance",
+      "publisher": "OWASP Foundation",
+      "type": "SECURITY_GUIDANCE",
+      "status": "DRAFT",
+      "legal_effect": "Emerging best practice; not legally binding",
+      "url": "https://owasp.org/projects/agentic-ai-security/",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "ITA-001",
+      "title": "Intelligenza Artificiale - Garante per la Protezione dei Dati Personali",
+      "publisher": "Italian Data Protection Authority (Garante Privacy)",
+      "type": "NATIONAL_AUTHORITY",
+      "status": "ONGOING",
+      "legal_effect": "National enforcement guidance; supplementary to GDPR/AI Act",
+      "url": "https://www.garanteprivacy.it/intelligenza-artificiale",
+      "last_verified": "2026-08-08",
+      "ttl_days": 30
+    },
+    {
+      "source_id": "ITA-002",
+      "title": "Decreto Legislativo di attuazione del Regolamento UE 2024/1689",
+      "publisher": "Italian Parliament / Government",
+      "type": "NATIONAL_LEGISLATION",
+      "status": "PENDING",
+      "legal_effect": "Will specify national enforcement authorities and sanctions procedures",
+      "url": "TBD",
+      "last_verified": "2026-08-08",
+      "ttl_days": 14,
+      "note": "Italy must designate competent authorities and establish sanction procedures per AI Act Chapter X."
+    }
+  ],
+  "status_legend": {
+    "BINDING": "Directly applicable EU law - Mandatory compliance",
+    "OFFICIAL_FINAL": "Official guidance published - Strongly recommended to follow",
+    "OFFICIAL_DRAFT": "Draft guidance from official body - Monitor for changes",
+    "VOLUNTARY_STANDARD": "Non-binding standard - May support evidence",
+    "VOLUNTARY_FRAMEWORK": "Non-binding framework - Informative reference",
+    "COMMUNITY_STANDARD": "Industry best practice - Recommended for security",
+    "ONGOING": "Actively updated resource - Regular review needed",
+    "PENDING": "Awaiting publication - Monitor for release"
+  },
+  "monitoring_protocol": {
+    "binding_legal_acts_ttl": 30,
+    "official_guidance_ttl": 30,
+    "standards_frameworks_ttl": 90,
+    "national_implementation_ttl": 14,
+    "action_on_stale": "Flag associated controls as REVIEW_REQUIRED until source re-verified"
+  }
+}

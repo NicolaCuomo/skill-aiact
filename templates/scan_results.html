@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1>📊 Risultati Scan</h1>
+    <a href="/scan" class="btn btn-secondary">↩️ Nuovo Scan</a>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Punteggio Generale</h3>
+        <div class="value" style="color: {% if results.overall_score >= 80 %}var(--success){% elif results.overall_score >= 60 %}var(--warning){% else %}var(--danger){% endif %};">
+            {{ results.overall_score }}/100
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>AppSec Score</h3>
+        <div class="value">{{ results.appsec_score }}/100</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>AI Act Score</h3>
+        <div class="value">{{ results.ai_act_score }}/100</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>File Scansionati</h3>
+        <div class="value">{{ results.files_scanned }}</div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        🚨 Riepilogo Issue
+    </div>
+    <div class="card-body">
+        <div class="stats-grid">
+            <div class="stat-card" style="border-left: 4px solid var(--danger);">
+                <h3>🔴 Critici</h3>
+                <div class="value" style="color: var(--danger);">{{ results.summary.critical }}</div>
+            </div>
+            
+            <div class="stat-card" style="border-left: 4px solid var(--warning);">
+                <h3>🟠 Alti</h3>
+                <div class="value" style="color: var(--warning);">{{ results.summary.high }}</div>
+            </div>
+            
+            <div class="stat-card" style="border-left: 4px solid #fbbf24;">
+                <h3>🟡 Medi</h3>
+                <div class="value" style="color: #fbbf24;">{{ results.summary.medium }}</div>
+            </div>
+            
+            <div class="stat-card" style="border-left: 4px solid var(--primary);">
+                <h3>🔵 Bassi</h3>
+                <div class="value" style="color: var(--primary);">{{ results.summary.low }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        📋 Lista Issue Dettagliate
+    </div>
+    <div class="card-body">
+        {% if results.issues %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Messaggio</th>
+                    <th>File</th>
+                    <th>Raccomandazione</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for issue in results.issues[:50] %}
+                <tr>
+                    <td>
+                        {% if issue.type == 'CRITICAL' %}
+                            <span class="badge badge-danger">🔴 CRITICO</span>
+                        {% elif issue.type == 'HIGH' %}
+                            <span class="badge badge-warning">🟠 ALTO</span>
+                        {% elif issue.type == 'MEDIUM' %}
+                            <span class="badge" style="background: #fef3c7; color: #92400e;">🟡 MEDIO</span>
+                        {% else %}
+                            <span class="badge" style="background: #dbeafe; color: #1e40af;">🔵 BASSO</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ issue.category }}</td>
+                    <td>{{ issue.message }}</td>
+                    <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                        {{ issue.file | replace('/workspace/', '') }}:{{ issue.get('line', '?') }}
+                    </td>
+                    <td style="max-width: 250px; overflow: hidden; text-overflow: ellipsis;">
+                        {{ issue.recommendation }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if results.issues|length > 50 %}
+        <p style="text-align: center; color: var(--text-light); margin-top: 1rem;">
+            ... e altri {{ results.issues|length - 50 }} issue. Vedi il report completo per i dettagli.
+        </p>
+        {% endif %}
+        {% else %}
+        <div class="alert alert-success">
+            ✅ Nessuna issue rilevata! Il progetto sembra sicuro e conforme.
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        🤖 Prompt per Autoriparazione AI
+    </div>
+    <div class="card-body">
+        <p style="margin-bottom: 1rem;">
+            Copia questo prompt e incollalo nella tua AI preferita (Cursor, Claude, ChatGPT) per ricevere aiuto nella risoluzione dei problemi.
+        </p>
+        
+        <pre style="background: var(--background); padding: 1rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.875rem; max-height: 400px; white-space: pre-wrap;">{{ fix_prompt }}</pre>
+        
+        <button class="btn" onclick="navigator.clipboard.writeText(`{{ fix_prompt | escape }}`)" style="margin-top: 1rem;">
+            📋 Copia Prompt
+        </button>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        💾 Download Report
+    </div>
+    <div class="card-body">
+        <a href="/reports" class="btn btn-secondary">📄 Vedi tutti i report salvati</a>
+    </div>
+</div>
+{% endblock %}

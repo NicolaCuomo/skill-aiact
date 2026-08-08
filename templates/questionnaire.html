@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="margin-bottom: 2rem;">📋 Questionario di Autovalutazione PMI</h1>
+
+<div class="card">
+    <div class="card-header">
+        🎯 Istruzioni
+    </div>
+    <div class="card-body">
+        <p style="margin-bottom: 1rem;">
+            Rispondi a tutte le domande per valutare il livello di conformità della tua azienda all'EU AI Act.
+        </p>
+        <div class="alert alert-warning">
+            <strong>⏱️ Tempo stimato:</strong> 20-30 minuti<br>
+            <strong>📊 Punteggio massimo:</strong> 30 punti (15 domande × 2 punti)
+        </div>
+    </div>
+</div>
+
+<form method="POST" action="/questionnaire/submit">
+    <input type="hidden" name="employee_id" value="{{ request.args.get('employee_id', '') }}">
+    
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            📊 Sezione 1: Classificazione del Sistema AI
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label><strong>1. La tua soluzione AI interagisce direttamente con clienti esterni?</strong></label>
+                <select name="q1" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ</option>
+                    <option value="partial">⚠️ PARZIALMENTE</option>
+                    <option value="no">❌ NO</option>
+                    <option value="unknown">❓ NON SO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>2. Il sistema AI prende decisioni che hanno impatto significativo sulle persone?</strong></label>
+                <select name="q2" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ</option>
+                    <option value="partial">⚠️ PARZIALMENTE</option>
+                    <option value="no">❌ NO</option>
+                    <option value="unknown">❓ NON SO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>3. L'AI viene utilizzata per identificare persone a distanza in tempo reale?</strong></label>
+                <select name="q3" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ</option>
+                    <option value="no">❌ NO</option>
+                    <option value="unknown">❓ NON APPLICABILE</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            🔐 Sezione 2: Gestione Dati e Privacy
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label><strong>4. Dove vengono salvati i dati dei clienti elaborati dal sistema AI?</strong></label>
+                <select name="q4" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ Server sicuri o Cloud certificato UE</option>
+                    <option value="partial">⚠️ Cloud extra-UE senza garanzie</option>
+                    <option value="no">❌ Computer locali senza crittografia</option>
+                    <option value="unknown">❓ NON SO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>5. Prima di inviare dati all'AI, procedi all'anonimizzazione?</strong></label>
+                <select name="q5" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, sempre</option>
+                    <option value="partial">⚠️ A volte, dipende dal caso</option>
+                    <option value="no">❌ NO, invio i dati così come sono</option>
+                    <option value="unknown">❓ NON SO COSA SIGNIFICA</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>6. Hai nominato un Responsabile della Protezione dei Dati (DPO)?</strong></label>
+                <select name="q6" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, interno o esterno</option>
+                    <option value="partial">⚠️ In corso di nomina</option>
+                    <option value="no">❌ NO, ma dovrei averlo</option>
+                    <option value="unknown">❓ NON SO SE È OBBLIGATORIO</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            🤖 Sezione 3: Trasparenza e Spiegabilità
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label><strong>7. I clienti sono informati quando interagiscono con un sistema AI?</strong></label>
+                <select name="q7" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, c'è un avviso chiaro</option>
+                    <option value="partial">⚠️ L'avviso c'è ma non è molto visibile</option>
+                    <option value="no">❌ NO, sembra tutto gestito da umani</option>
+                    <option value="unknown">❓ NON SO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>8. Sei in grado di spiegare COME l'AI ha preso una decisione?</strong></label>
+                <select name="q8" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, abbiamo documentazione tecnica</option>
+                    <option value="partial">⚠️ Parzialmente, ma non in modo dettagliato</option>
+                    <option value="no">❌ NO, è una "scatola nera"</option>
+                    <option value="unknown">❓ NON SO COME FUNZIONA</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            👤 Sezione 4: Supervisione Umana
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label><strong>9. Esiste una procedura per cui un umano verifica le decisioni dell'AI?</strong></label>
+                <select name="q9" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, per tutte le decisioni importanti</option>
+                    <option value="partial">⚠️ Solo per alcune decisioni critiche</option>
+                    <option value="no">❌ NO, l'AI decide in autonomia</option>
+                    <option value="unknown">❓ NON SO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>10. I tuoi dipendenti sono formati sull'uso corretto dell'AI?</strong></label>
+                <select name="q10" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, corso annuale obbligatorio</option>
+                    <option value="partial">⚠️ Formazione saltuaria o facoltativa</option>
+                    <option value="no">❌ NO, nessuna formazione specifica</option>
+                    <option value="unknown">❓ NON SO SE ESISTE QUEST'OBLIGO</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            📝 Sezione 5: Documentazione e Tracciabilità
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label><strong>11. Mantieni un registro delle chiamate AI (input, output, data)?</strong></label>
+                <select name="q11" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, log strutturati e conservati</option>
+                    <option value="partial">⚠️ Log parziali o non organizzati</option>
+                    <option value="no">❌ NO, nessuna tracciabilità</option>
+                    <option value="unknown">❓ NON SO COME FARLO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>12. Hai documentato le finalità, i limiti e i rischi del sistema AI?</strong></label>
+                <select name="q12" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, documentazione completa aggiornata</option>
+                    <option value="partial">⚠️ Documentazione parziale o non aggiornata</option>
+                    <option value="no">❌ NO, nessuna documentazione formale</option>
+                    <option value="unknown">❓ NON SO COSA DOCUMENTARE</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            🚨 Sezione 6: Gestione Rischi e Incidenti
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label><strong>13. Hai una procedura per gestire incidenti legati all'AI?</strong></label>
+                <select name="q13" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, procedura scritta e testata</option>
+                    <option value="partial">⚠️ Procedura informale o non testata</option>
+                    <option value="no">❌ NO, gestiamo gli incidenti caso per caso</option>
+                    <option value="unknown">❓ NON SO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>14. Effettui test periodici per verificare accuratezza e cybersecurity?</strong></label>
+                <select name="q14" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, test annuali con report</option>
+                    <option value="partial">⚠️ Test saltuari o informali</option>
+                    <option value="no">❌ NO, nessun test specifico</option>
+                    <option value="unknown">❓ NON SO COME TESTARE</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>15. Hai valutato l'impatto ambientale del sistema AI?</strong></label>
+                <select name="q15" required>
+                    <option value="">Seleziona...</option>
+                    <option value="yes">✅ SÌ, misuriamo e ottimizziamo</option>
+                    <option value="partial">⚠️ Valutazione parziale</option>
+                    <option value="no">❌ NO, non consideriamo questo aspetto</option>
+                    <option value="unknown">❓ NON SO CHE C'ENTRI</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 2rem; text-align: center;">
+        <button type="submit" class="btn btn-success" style="padding: 1rem 2rem; font-size: 1.125rem;">
+            ✅ Invia Questionario e Calcola Rischio
+        </button>
+    </div>
+</form>
+{% endblock %}
