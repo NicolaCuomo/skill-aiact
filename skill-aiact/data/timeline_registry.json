@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "document_type": "timeline_registry",
+    "version": "1.0.0",
+    "last_updated": "2026-08-08",
+    "reference_date": "2026-08-08",
+    "owner": "skill-aiact Compliance Team"
+  },
+  "enforcement_dates": [
+    {
+      "date": "2025-02-02",
+      "status": "IN_FORCE",
+      "phase": "INITIAL",
+      "provisions": [
+        {
+          "article": "3",
+          "title": "Definitions",
+          "description": "AI System, Provider, Deployer, Importer, Distributor definitions"
+        },
+        {
+          "article": "5",
+          "title": "Prohibited AI Practices",
+          "description": "Ban on manipulative AI, social scoring, biometric categorisation"
+        },
+        {
+          "article": "4",
+          "title": "AI Literacy",
+          "description": "Obligation to develop AI literacy measures (as amended by Digital Omnibus)"
+        }
+      ],
+      "implications_for_smes": [
+        "Ban on manipulative AI, social scoring, biometric categorisation (with limited exceptions)",
+        "Obligation to develop AI literacy measures for personnel using AI systems",
+        "Definition of what constitutes an AI system determines scope of all other obligations"
+      ]
+    },
+    {
+      "date": "2025-08-02",
+      "status": "IN_FORCE",
+      "phase": "GPAI_RULES",
+      "provisions": [
+        {
+          "chapter": "V",
+          "title": "General-Purpose AI Rules",
+          "description": "GPAI provider obligations"
+        },
+        {
+          "articles": ["53", "54", "55"],
+          "title": "GPAI Provider Obligations",
+          "description": "Technical documentation, copyright compliance, incident reporting"
+        },
+        {
+          "annex": "II",
+          "title": "GPAI Technical Documentation",
+          "description": "Required documentation for GPAI models"
+        }
+      ],
+      "implications_for_smes": [
+        "If your company provides foundation models (GPAI), full compliance required",
+        "Most SMEs are deployers not providers of GPAI",
+        "Voluntary Codes of Practice available for demonstrating adequacy"
+      ]
+    },
+    {
+      "date": "2026-08-02",
+      "status": "IN_FORCE",
+      "phase": "CURRENT_TRANSAPARENCY_ENFORCEMENT",
+      "provisions": [
+        {
+          "article": "50",
+          "title": "Transparency Obligations for Certain AI Systems",
+          "description": "Disclosure requirements for chatbots, deepfakes, emotion recognition"
+        },
+        {
+          "article": "26",
+          "title": "Obligations of Deployers",
+          "description": "Deployer responsibilities for high-risk AI systems"
+        },
+        {
+          "chapter": "X",
+          "title": "Enforcement Powers",
+          "description": "National authority enforcement begins"
+        }
+      ],
+      "implications_for_smes": [
+        "Transparency obligations NOW ACTIVE: Must inform users when interacting with AI",
+        "Chatbots must disclose they are AI systems",
+        "Deepfakes must be labeled as artificially generated/manipulated",
+        "Emotion recognition systems must inform affected persons",
+        "Biometric categorisation requires explicit transparency",
+        "National authorities can now impose sanctions",
+        "Fines up to EUR 15M or 3% global turnover for prohibited practices",
+        "Fines up to EUR 7.5M or 1% for transparency violations"
+      ],
+      "immediate_actions": [
+        "Review Art. 5 prohibited practices - ensure no banned AI uses",
+        "Audit all customer-facing AI for Art. 50 transparency compliance",
+        "Label all AI-generated content and deepfakes",
+        "Disclose AI use in chatbots and direct interactions",
+        "Complete AI system inventory",
+        "Classify each system: Prohibited / High-Risk / Transparency / Minimal Risk",
+        "Implement Art. 4 AI literacy training for relevant staff",
+        "Review GDPR compliance for any personal data processing via AI"
+      ]
+    },
+    {
+      "date": "2027-12-02",
+      "status": "PENDING",
+      "phase": "HIGH_RISK_ANNEX_III",
+      "provisions": [
+        {
+          "annex": "III",
+          "title": "High-Risk AI Systems (Standalone)",
+          "description": "Classification of high-risk AI systems in specified domains"
+        },
+        {
+          "article": "6(2)",
+          "title": "High-Risk Classification",
+          "description": "Classification rules for Annex III systems"
+        },
+        {
+          "articles": ["9", "10", "11", "12", "13", "14", "15"],
+          "title": "Full High-Risk Requirements",
+          "description": "Risk management, data governance, documentation, logging, oversight, accuracy"
+        }
+      ],
+      "affected_domains": [
+        "Biometrics (remote identification, emotion recognition in workplace/education)",
+        "Critical Infrastructure (road traffic, energy, water, digital infrastructure)",
+        "Education & Vocational Training (admissions, assessments, proctoring)",
+        "Employment & Worker Management (recruitment, promotion, termination, task allocation)",
+        "Access to Essential Services (credit scoring, insurance, social benefits)",
+        "Migration, Asylum & Border Control",
+        "Justice & Democratic Processes (court evidence, voting, public opinion analysis)"
+      ],
+      "preparation_required": [
+        "Inventory all AI systems used in these domains",
+        "Begin risk management system implementation",
+        "Establish human oversight procedures",
+        "Prepare technical documentation per Annex IV"
+      ]
+    },
+    {
+      "date": "2028-08-02",
+      "status": "PENDING",
+      "phase": "PRODUCT_INTEGRATION_ANNEX_I",
+      "provisions": [
+        {
+          "annex": "I",
+          "title": "AI Systems Integrated in Regulated Products",
+          "description": "High-risk AI as safety component of regulated products"
+        },
+        {
+          "article": "6(1)",
+          "title": "Product Safety Component Rule",
+          "description": "AI systems that are safety components of products under sectoral legislation"
+        }
+      ],
+      "affected_product_categories": [
+        "Machinery Directive products",
+        "Medical devices (MDR)",
+        "In vitro diagnostic devices (IVDR)",
+        "Motor vehicles & aviation",
+        "Elevators & lifts",
+        "Personal protective equipment (PPE)"
+      ],
+      "special_considerations": [
+        "These systems must comply with AI Act requirements AND existing product safety regulations",
+        "Coordination between AI Act conformity assessment and product certification required"
+      ]
+    }
+  ],
+  "digital_omnibus_changes": {
+    "regulation": "Regulation (EU) 2026/1744",
+    "entry_into_force": "2026-07-27",
+    "modifications": [
+      {
+        "area": "AI Literacy (Art. 4)",
+        "before": "Specific sufficient level of AI literacy required",
+        "after": "Simplified obligation - promote AI literacy appropriate to context",
+        "effect": "More flexibility, but still mandatory for personnel using AI"
+      },
+      {
+        "area": "High-Risk Timelines - Annex III",
+        "before": "2026-08-02",
+        "after": "2027-12-02",
+        "effect": "Additional 16 months for standalone high-risk systems preparation"
+      },
+      {
+        "area": "High-Risk Timelines - Annex I",
+        "before": "2027-08-02",
+        "after": "2028-08-02",
+        "effect": "Additional 12 months for product-integrated AI systems"
+      },
+      {
+        "area": "Enforcement Coordination",
+        "change": "Enhanced AI Office powers at EU level with coordinated enforcement approach across Member States"
+      }
+    ]
+  },
+  "summary_table": [
+    {"date": "2025-02-02", "provision_type": "Prohibitions + Definitions", "risk_level": "CRITICAL", "who_must_comply": "ALL operators"},
+    {"date": "2025-08-02", "provision_type": "GPAI Rules", "risk_level": "HIGH", "who_must_comply": "GPAI Providers"},
+    {"date": "2026-08-02", "provision_type": "Transparency + Enforcement", "risk_level": "HIGH", "who_must_comply": "ALL deployers"},
+    {"date": "2027-12-02", "provision_type": "High-Risk (Annex III)", "risk_level": "CRITICAL", "who_must_comply": "High-risk deployers/providers"},
+    {"date": "2028-08-02", "provision_type": "Product Integration (Annex I)", "risk_level": "CRITICAL", "who_must_comply": "Product manufacturers"}
+  ],
+  "source_references": [
+    {"name": "AI Act Original", "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng"},
+    {"name": "Consolidated Version (2026-07-27)", "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng"},
+    {"name": "Digital Omnibus", "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng"},
+    {"name": "Commission Timeline", "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"}
+  ]
+}
