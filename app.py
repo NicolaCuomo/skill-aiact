@@ -59,12 +59,13 @@ SECRET_PATTERNS = {
 
 # Pattern per EU AI Act Compliance
 AI_ACT_PATTERNS = {
-    "audit_logging": r"(?i)(audit.?log|log.*event|track.*action|record.*decision)",
-    "pii_handling": r"(?i)(codice.?fiscale|partita.?iva|iban|email|telefono|indirizzo)",
-    "human_in_loop": r"(?i)(confirm|approve|verify|human.?check|manual.?review)",
-    "transparency": r"(?i)(explain|rationale|decision.*reason|motivation)",
-    "risk_assessment": r"(?i)(risk.*assess|impact.*analysis|threat.*model)",
+    "audit_logging": [r"audit.?log", r"log.*event", r"track.*action", r"record.*decision"],
+    "pii_handling": [r"codice.?fiscale", r"partita.?iva", r"iban", r"email", r"telefono", r"indirizzo"],
+    "human_in_loop": [r"confirm", r"approve", r"verify", r"human.?check", r"manual.?review"],
+    "transparency": [r"explain", r"rationale", r"decision.*reason", r"motivation"],
+    "risk_assessment": [r"risk.*assess", r"impact.*analysis", r"threat.*model"],
 }
+
 
 # Pattern PII sensibili
 PII_PATTERNS = {
@@ -450,7 +451,7 @@ class AuditEngine:
         functions_to_check = ['send_email', 'delete_', 'payment', 'transfer', 'approve']
         for func in functions_to_check:
             if func in content.lower():
-                has_hitl = re.search(AI_ACT_PATTERNS['human_in_loop'], content, re.IGNORECASE)
+                has_hitl = any(re.search(p, content, re.IGNORECASE) for p in AI_ACT_PATTERNS['human_in_loop'])
                 if not has_hitl:
                     issues.append({
                         'type': 'MEDIUM',
