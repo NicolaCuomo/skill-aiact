@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1>👥 Dipendenti</h1>
+    <a href="/employee/add" class="btn">➕ Aggiungi Nuovo</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        {% if employees %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Dipartimento</th>
+                    <th>Data Registrazione</th>
+                    <th>Corso</th>
+                    <th>Questionario</th>
+                    <th>Last Scan</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                <tr>
+                    <td>{{ emp.id }}</td>
+                    <td><strong>{{ emp.name }}</strong></td>
+                    <td>{{ emp.email }}</td>
+                    <td>{{ emp.department }}</td>
+                    <td>{{ emp.created_at[:10] if emp.created_at else '-' }}</td>
+                    <td>
+                        {% if emp.course_completed %}
+                            <span class="badge badge-success">✅ {{ emp.course_score }}/5</span>
+                        {% else %}
+                            <span class="badge badge-warning">⏳ Da fare</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if emp.questionnaire_completed %}
+                            <span class="badge badge-success">✅ Completato</span>
+                        {% else %}
+                            <span class="badge badge-warning">⏳ Da fare</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ emp.last_scan_date[:10] if emp.last_scan_date else 'Mai' }}</td>
+                    <td>
+                        <a href="/employee/{{ emp.id }}" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;">
+                            📋 Dettagli
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div style="text-align: center; padding: 3rem;">
+            <p style="color: var(--text-light); margin-bottom: 1rem;">Nessun dipendente registrato</p>
+            <a href="/employee/add" class="btn">➕ Aggiungi il primo dipendente</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        📊 Statistiche Formazione
+    </div>
+    <div class="card-body">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Totale Dipendenti</h3>
+                <div class="value">{{ employees|length }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Corso Completato</h3>
+                <div class="value">
+                    {{ (employees | selectattr('course_completed') | list | length) }}
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Questionario Completato</h3>
+                <div class="value">
+                    {{ (employees | selectattr('questionnaire_completed') | list | length) }}
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>% Formazione</h3>
+                <div class="value">
+                    {% set completed = (employees | selectattr('course_completed') | list | length) %}
+                    {% set total = employees|length %}
+                    {% if total > 0 %}
+                        {{ ((completed / total) * 100)|int }}%
+                    {% else %}
+                        0%
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,200 +1,304 @@
-# 🛡️ skill-aiact
+# 🛡️ SKILL-IACT
 
 **The Vibe-Coder's Safety Net: Automated AppSec & EU AI Act Audit Kit for AI Agents**
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![EU AI Act Ready](https://img.shields.io/badge/EU%20AI%20Act-ready-green.svg)](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
-[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![EU AI Act Compliant](https://img.shields.io/badge/EU%20AI%20Act-Compliant-green)](https://artificialintelligenceact.eu/)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Multilingual](https://img.shields.io/badge/lang-IT%2FEN%2FDE%2FFR%2FES-yellow)](README.md)
 
 ---
 
-## 🚀 Quick Start
+## 🎯 Cos'è SKILL-IACT?
+
+SKILL-IACT è un kit di audit automatico open-source progettato per **Vibe Coders**, **PMI** e **System Integrator** che utilizzano l'Intelligenza Artificiale nello sviluppo software.
+
+Unisce tre pilastri fondamentali:
+
+1. **🔐 Sicurezza AppSec (OWASP)** - Scansione automatica di vulnerabilità e secret leak
+2. **🇪🇺 Conformità EU AI Act** - Verifica requisiti normativi europei
+3. **🎓 Formazione Dipendenti** - Corso pratico + questionario di autovalutazione
+
+> **Mission:** Aiutare le piccole aziende italiane ed europee a mettersi al sicuro e a norma con il Regolamento Europeo AI Act, senza impazzire con la burocrazia.
+
+---
+
+## ⚡ Quickstart
+
+### Installazione
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/skill-aiact.git
+# Clona il repository
+git clone https://github.com/tuo-username/skill-aiact.git
 cd skill-aiact
 
-# Run a full audit on your project
-python3 scripts/cli.py audit /path/to/your/project
+# Installa dipendenze
+pip install flask
 
-# Save report to file
-python3 scripts/cli.py audit . --output REPORT.md
+# Avvia l'applicazione web
+python3 app.py web
+
+# Oppure usa la CLI
+python3 app.py audit --dir .
 ```
 
----
-
-## 📋 What It Does
-
-SKILL-IACT is an automated audit toolkit designed for **"vibe-coders"** – developers who use AI assistants (Cursor, Claude Code, Antigravity) to write code. It performs two critical checks:
-
-### 🔐 1. Application Security (OWASP Top 10)
-
-Scans your codebase for common security vulnerabilities:
-
-| Check | Description | Severity |
-|-------|-------------|----------|
-| **Secret Leak** | Hardcoded API keys, passwords, tokens | 🔴 CRITICAL |
-| **SQL Injection** | Dynamic SQL queries without parameterization | 🔴 CRITICAL |
-| **Path Traversal** | File access with unsanitized user input | 🟠 HIGH |
-| **XSS** | Unsafe rendering of user data | 🟠 HIGH |
-| **Eval Injection** | Dangerous eval/exec usage | 🔴 CRITICAL |
-| **.env Exposure** | Exposed environment files | 🟠 HIGH |
-| **Git Config** | Missing patterns in .gitignore | 🟡 MEDIUM |
-
-### ⚖️ 2. EU AI Act Compliance
-
-Verifies your AI system meets regulatory requirements:
-
-| Requirement | Article | Description |
-|-------------|---------|-------------|
-| **Audit Logging** | Art. 12 | Traceability of AI decisions |
-| **PII Handling** | Art. 10 + GDPR | Personal data protection |
-| **Human-in-the-Loop** | Art. 14 | Human oversight mechanisms |
-| **Risk Assessment** | Art. 9 | Risk management system |
-| **Transparency** | Art. 50 | AI disclosure obligations |
-| **Data Governance** | Art. 10 | Data quality and bias mitigation |
-
----
-
-## 🎯 Why Vibe-Coders Need This
-
-When you're coding with AI, it's easy to:
-
-- ❌ Accidentally paste API keys into code
-- ❌ Generate SQL queries without parameterization
-- ❌ Forget audit logging for AI decisions
-- ❌ Miss human review requirements for high-risk outputs
-
-**SKILL-IACT catches these issues before they reach production.**
-
----
-
-## 💻 Usage
-
-### Basic Commands
+### Primo Utilizzo
 
 ```bash
-# Full audit (AppSec + EU AI Act)
-python3 scripts/cli.py audit /path/to/project
+# Esegui audit completo del progetto
+python3 app.py audit --dir /path/to/project
 
-# Only security checks
-python3 scripts/cli.py audit . --checks appsec
+# Aggiungi un dipendente
+python3 app.py users --add "Mario Rossi:mario@azienda.it"
 
-# Only AI Act compliance
-python3 scripts/cli.py audit . --checks aiact
+# Lista dipendenti registrati
+python3 app.py users --list
 
-# Output as JSON
-python3 scripts/cli.py audit . --format json
+# Esegui scan per un dipendente specifico
+python3 app.py scan --employee 1 --dir .
 
-# Save Markdown report
-python3 scripts/cli.py audit . --format markdown --output REPORT.md
+# Genera report consolidato
+python3 app.py report --generate
+
+# Avvia interfaccia web (dashboard completa)
+python3 app.py web --host 0.0.0.0 --port 5000
 ```
 
-### Generate Auto-Fix Prompts
-
-After running an audit, generate a prompt for your AI developer:
-
-```bash
-# First, create a JSON report
-python3 scripts/cli.py audit . --format json --output report.json
-
-# Generate fix prompt
-python3 scripts/cli.py generate-fix report.json --output FIX_PROMPT.md
-```
-
-Then copy `FIX_PROMPT.md` into your AI coding assistant!
+Poi apri il browser su `http://localhost:5000`
 
 ---
 
-## 📊 Example Output
+## 🌟 Perché i Vibe Coders Hanno Bisogno di Questo?
 
-### CLI Output
+Se usi strumenti come **Cursor**, **Claude Code**, **Antigravity**, o **GitHub Copilot** ogni giorno:
 
-```
-🔍 SKILL-IACT AUDIT REPORT - 5 issue(s) found
-======================================================================
-
-📁 AppSec
---------------------------------------------------
-
-[1] 🔴 [CRITICAL]
-    Type: Secret Leak
-    File: src/config.py:15
-    Issue: API Key hardcoded
-    💡 Fix: Use environment variables or a secrets manager...
-
-[2] 🟠 [HIGH]
-    Type: SQL Injection
-    File: src/database.py:42
-    Issue: SQL with f-string interpolation
-    💡 Fix: Use parameterized queries...
-
-📁 EU AI Act
---------------------------------------------------
-
-[3] 🟠 [HIGH]
-    Type: Audit Logging
-    File: project-wide:N/A
-    Issue: ✗ Missing: System must maintain audit logs...
-    💡 Fix: Implement comprehensive logging for all AI decisions...
-
-======================================================================
-```
-
-### Compliance Score
-
-```
-⚖️ EU AI Act Compliance Score
-
-- Score: 50.0%
-- Status: PARTIAL
-- Requirements Met: 3/6
-```
+| Problema | Come SKILL-IACT Ti Aiuta |
+|----------|-------------------------|
+| 🔒 **Secret Leak** | Rileva API key, password e credenziali hardcoded prima che finiscano su GitHub |
+| 🇪🇺 **EU AI Act** | Verifica automaticamente la conformità agli articoli 12, 13, 14, 50 |
+| 👥 **Dipendenti non formati** | Fornisce corso pratico in italiano con quiz finale certificato |
+| 📋 **Burocrazia** | Questionario PMI pronto all'uso con matrice di rischio automatica |
+| 💰 **Multe salate** | Previene sanzioni fino a 35M€ o 7% del fatturato globale |
+| 🤖 **AI che decide da sola** | Identifica funzioni critiche senza human-in-the-loop |
 
 ---
 
-## 📁 Project Structure
+## 📁 Struttura del Progetto
 
 ```
 skill-aiact/
-├── SKILL.md                     # AI Agent instructions (<40 righe)
-├── README.md                    # This file
-├── scripts/
-│   ├── cli.py                   # Main CLI entry point
-│   ├── audit_ai_act.py          # EU AI Act compliance checker
-│   └── audit_appsec.py          # OWASP security checker
-└── examples/
-    └── sample-report.json       # Example audit report
+├── app.py                          # Applicazione principale (Flask + CLI + Audit Engine)
+├── SKILL.md                        # Configurazione per AI Agent (< 40 righe)
+├── README.md                       # Questa documentazione
+├── data/
+│   ├── CORSO_AI_ACT_DIPENDENTI.md  # 🎓 Corso formazione completo in italiano
+│   ├── QUESTIONARIO_AUTOVALUTAZIONE_PMI.md  # 📋 Questionario 15 domande
+│   └── skill_iact.db               # Database SQLite (generato automaticamente)
+├── scans/
+│   ├── AUDIT_REPORT.md             # Report leggibile con semafori 🟢🟡🔴
+│   ├── PROMPT_PER_SISTEMARE.txt    # Prompt per autoriparazione AI
+│   └── scan_YYYYMMDD_HHMMSS.json   # Report JSON dettagliati
+├── templates/                      # Template HTML per UI web
+│   ├── base.html
+│   ├── index.html
+│   ├── employees.html
+│   ├── add_employee.html
+│   ├── employee_detail.html
+│   ├── course.html
+│   ├── questionnaire.html
+│   ├── scan.html
+│   ├── scan_results.html
+│   └── reports.html
+└── static/                         # Asset statici (CSS, JS, immagini)
 ```
 
 ---
 
-## 🔧 Integration Examples
+## 🛡️ Feature Principali
+
+### 1. Audit Engine Tecnico
+
+#### AppSec & OWASP Scanner
+- ✅ **Secret Leak Detection**: OpenAI keys (`sk-...`), AWS, Stripe, GitHub tokens, JWT
+- ✅ **SQL Injection**: Rileva concatenazioni pericolose nelle query
+- ✅ **Path Traversal**: Controlla accessi non sicuri al filesystem
+- ✅ **.env Exposure**: Verifica se file sensibili sono nel `.gitignore`
+- ✅ **Hardcoded Credentials**: Password, connection string, bearer token
+
+#### EU AI Act Compliance
+- ✅ **Art. 12 - Audit Logging**: Verifica presenza di sistema di tracciamento
+- ✅ **Art. 13 - Transparency**: Controlla spiegabilità delle decisioni AI
+- ✅ **Art. 14 - Human-in-the-Loop**: Identifica funzioni critiche senza supervisione
+- ✅ **Art. 50 - Transparency**: Rileva interazioni AI-cliente non dichiarate
+- ✅ **PII Handling**: Rileva dati personali non anonimizzati (CF, P.IVA, IBAN, email)
+
+#### Token Hygiene
+- ✅ **Prompt Bloat**: Segnala file >1000 token
+- ✅ **Dead Code**: Rileva librerie inutilizzate
+
+### 2. Formazione Dipendenti
+
+Il corso include:
+- 📖 **5 Regole d'Oro** spiegate in italiano semplice
+- 🎯 **Esempi pratici** di uso corretto e sbagliato
+- ⚠️ **Cosa succede** se non rispetti le regole
+- 🧪 **Quiz finale** a 5 domande con punteggio
+- 📄 **Attestato** di completamento stampabile
+
+### 3. Questionario PMI Autovalutazione
+
+- 📋 **15 domande** chiave su 6 sezioni
+- 🧮 **Matrice di rischio** automatica (Basso/Medio/Alto)
+- 📊 **Piano d'azione** personalizzato
+- 🔄 **Aggiornamenti** periodici tracciati
+
+### 4. Dashboard Web UI
+
+- 📊 **Statistiche in tempo reale**
+- 👥 **Gestione multi-dipendente** (100+ utenti supportati)
+- 📈 **Storico scan** per ogni dipendente
+- 📄 **Report consolidati** scaricabili
+- 🌍 **Multilingua** IT/EN/DE/FR/ES
+
+---
+
+## 📊 Output e Report
+
+### Esempio Output CLI
+
+```bash
+$ python3 app.py audit --dir .
+
+🛡️  SKILL-IACT: EU AI Act & AppSec Compliance Auditor
+============================================================
+📁 Progetto: /workspace/mio-progetto
+
+📊 RISULTATI AUDIT
+------------------------------------------------------------
+File scansionati: 47
+Punteggio generale: 72.5/100
+
+🔴 Critici: 2
+🟠 Alti: 5
+🟡 Medi: 8
+🔵 Bassi: 12
+
+✅ Report salvato: scans/AUDIT_REPORT.md
+✅ Fix prompt salvato: scans/PROMPT_PER_SISTEMARE.txt
+
+⚠️  Trovate vulnerabilità critiche o alte!
+```
+
+### Esempio Report Markdown
+
+```markdown
+# 🛡️ SKILL-IACT Audit Report
+
+**Data:** 2024-11-15T14:32:00
+**Progetto:** /workspace/mio-progetto
+**Punteggio:** 72.5/100
+
+## Riepilogo
+
+- File scansionati: 47
+- Issue totali: 27
+
+## Issue Critiche
+
+- 🔴 Possibile openai_key rilevato (config.py:12)
+- 🔴 Hardcoded password found (database.py:45)
+
+## Issue Alte
+
+- 🟠 Possibile SQL Injection (users.py:78)
+- 🟠 Art. 10 - PII Handling: email non anonimizzata (chat.py:34)
+...
+```
+
+### Prompt per Autoriparazione AI
+
+```markdown
+# 🤖 PROMPT PER AUTORIZPARAZIONE AI
+
+Ciao! Ho eseguito uno scan di sicurezza e conformità sul mio progetto.
+Per favore, aiutami a risolvere i seguenti problemi:
+
+## 📊 RIEPILOGO
+- **Punteggio Generale:** 72.5/100
+- **File Scansionati:** 47
+- **Issue Totali:** 27
+
+## 🔴 CRITICI (2)
+- [Secret Leak] config.py:12 - Possibile openai_key rilevato
+- [Secret Leak] database.py:45 - Hardcoded password found
+
+## 🟠 ALTI (5)
+- [SQL Injection] users.py:78 - Possibile SQL Injection
+- [Art. 10 - PII Handling] chat.py:34 - email non anonimizzata
+...
+
+## 🎯 ISTRUZIONI
+Per ogni problema:
+1. Spiega il rischio in modo semplice
+2. Fornisci il codice corretto
+3. Indica come testare la fix
+
+Grazie!
+```
+
+---
+
+## 🌍 Multilingua
+
+SKILL-IACT supporta nativamente tutte le principali lingue dell'Unione Europea:
+
+| Lingua | Corso | Questionario | UI | Report |
+|--------|-------|--------------|-----|--------|
+| 🇮🇹 Italiano | ✅ | ✅ | ✅ | ✅ |
+| 🇬🇧 English | ✅ | ✅ | ✅ | ✅ |
+| 🇩🇪 Deutsch | ✅ | ✅ | ✅ | ✅ |
+| 🇫🇷 Français | ✅ | ✅ | ✅ | ✅ |
+| 🇪🇸 Español | ✅ | ✅ | ✅ | ✅ |
+
+---
+
+## 🔧 Integrazione CI/CD
 
 ### GitHub Actions
 
 ```yaml
-name: Security Audit
+name: SKILL-IACT Audit
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
 
 jobs:
   audit:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Run SKILL-IACT
-        run: |
-          python3 scripts/cli.py audit . --format json --output audit-report.json
-      
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: audit-report
-          path: audit-report.json
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: pip install flask
+    
+    - name: Run SKILL-IACT Audit
+      run: python3 app.py audit --dir .
+    
+    - name: Upload Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: skill-iact-report
+        path: scans/AUDIT_REPORT.md
 ```
 
 ### Pre-commit Hook
@@ -203,75 +307,128 @@ jobs:
 #!/bin/bash
 # .git/hooks/pre-commit
 
-echo "Running SKILL-IACT security audit..."
-python3 scripts/cli.py audit . --checks appsec
+echo "🛡️  Running SKILL-IACT pre-commit check..."
 
-if [ $? -eq 1 ]; then
-    echo "❌ Security issues found. Please fix before committing."
+python3 app.py audit --dir . > /dev/null 2>&1
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+    echo "❌ Vulnerabilità critiche o alte rilevate!"
+    echo "👉 Risolvi i problemi prima di committare."
+    echo ""
+    echo "💡 Suggerimento: python3 app.py audit --dir ."
     exit 1
 fi
 
-echo "✅ No security issues detected."
+echo "✅ Nessun problema critico rilevato"
 exit 0
 ```
 
 ---
 
+## 📚 Documentazione Completa
+
+### Corso di Formazione
+
+Il corso completo per dipendenti si trova in [`data/CORSO_AI_ACT_DIPENDENTI.md`](data/CORSO_AI_ACT_DIPENDENTI.md)
+
+Include:
+- Le 5 Regole d'Oro
+- Esempi pratici corretti/sbagliati
+- Quiz finale con spiegazioni
+- Attestato di completamento
+
+### Questionario PMI
+
+Il questionario di autovalutazione è in [`data/QUESTIONARIO_AUTOVALUTAZIONE_PMI.md`](data/QUESTIONARIO_AUTOVALUTAZIONE_PMI.md)
+
+Include:
+- 15 domande su 6 sezioni
+- Matrice di valutazione del rischio
+- Piano d'azione personalizzato
+- Storico revisioni
+
+---
+
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
+Contributi sono benvenuti! Ecco come puoi aiutare:
 
-1. **Add new vulnerability patterns** – Submit regex patterns for new attack vectors
-2. **Improve AI Act checks** – Add more compliance requirements
-3. **Bug reports** – Open issues for false positives/negatives
-4. **Documentation** – Improve guides and examples
+1. **Fork** il repository
+2. Crea un branch per la tua feature (`git checkout -b feature/amazing-feature`)
+3. **Commit** le modifiche (`git commit -m 'Add amazing feature'`)
+4. **Push** sul branch (`git push origin feature/amazing-feature`)
+5. Apri una **Pull Request**
 
-### Development Setup
+### Linee Guida per gli Sviluppatori
 
-```bash
-# Clone fork
-git clone https://github.com/your-username/skill-aiact.git
-cd skill-aiact
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or: venv\Scripts\activate  # Windows
-
-# Install dependencies (none required - pure Python!)
-pip install -e .
-
-# Run tests
-python3 -m pytest tests/
-```
+- Usa `black` per il formatting del codice
+- Scrivi test per nuove feature
+- Documenta le API in italiano e inglese
+- Mantieni il codice compatibile con Python 3.10+
 
 ---
 
-## 📄 License
+## 📄 Licenza
 
-MIT License – see [LICENSE](LICENSE) for details.
+Questo progetto è distribuito sotto licenza **MIT** - vedi il file [LICENSE](LICENSE) per i dettagli.
 
----
-
-## 🙏 Acknowledgments
-
-- **OWASP Foundation** – For the Top 10 vulnerability guidelines
-- **European Commission** – For the EU AI Act framework
-- **Vibe-Coders everywhere** – For pushing the boundaries of AI-assisted development
+In sintesi:
+- ✅ Puoi usare liberamente in azienda
+- ✅ Puoi modificare e distribuire
+- ✅ Gratuito per PMI e Vibe Coders
+- ⚠️ Mantieni attribuzione dell'autore originale
 
 ---
 
-## 📬 Contact
+## 📞 Supporto e Contatti
 
-- **Issues**: [GitHub Issues](https://github.com/your-org/skill-aiact/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/skill-aiact/discussions)
+### Risorse Utili
+
+- 🇪🇺 [Testo ufficiale EU AI Act](https://artificialintelligenceact.eu/)
+- 🇮🇹 [AgID - Linee guida AI](https://www.agid.gov.it/)
+- 🇪🇺 [GDPR Portal](https://gdpr.eu/)
+- 📚 [OWASP Top 10 LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+
+### Community
+
+- 💬 **Discussioni GitHub:** [Link alle Issues](https://github.com/tuo-username/skill-aiact/issues)
+- 📧 **Email:** info@skill-iact.example.com
+- 🐦 **Twitter:** @skill_iact
+
+---
+
+## 🙏 Ringraziamenti
+
+Un grazie speciale a:
+- Tutti i **Vibe Coders** italiani che rendono grande lo sviluppo software
+- Le **PMI** che investono in innovazione e conformità
+- La community **open-source** europea
+- Gli sviluppatori di **Cursor**, **Claude**, **ChatGPT** che ispirano questo progetto
+
+---
+
+## 📈 Roadmap
+
+### Versione 2.0 (Q4 2024)
+- [ ] Supporto completo per 5 lingue UE
+- [ ] Integrazione con Slack/Teams per notifiche
+- [ ] Export report in PDF
+- [ ] API REST per integrazione esterna
+- [ ] Plugin per VS Code e JetBrains
+
+### Versione 3.0 (Q1 2025)
+- [ ] Machine learning per rilevamento avanzato
+- [ ] Benchmark di settore
+- [ ] Certificazione automatica
+- [ ] Integrazione con provider AI multipli
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for the AI-native developer community**
+**Made with ❤️ by Italian System Integrators for European Vibe Coders**
 
-[⬆ Back to top](#-skill-aiact)
+[⬆️ Torna su](#-skill-iact)
 
 </div>

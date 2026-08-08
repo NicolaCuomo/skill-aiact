@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="margin-bottom: 2rem;">🔍 Esegui Scan Progetto</h1>
+
+<div class="card">
+    <div class="card-header">
+        📁 Configurazione Scan
+    </div>
+    <div class="card-body">
+        <form method="POST" action="/scan">
+            {% if request.args.get('employee_id') %}
+            <input type="hidden" name="employee_id" value="{{ request.args.get('employee_id') }}">
+            <div class="alert alert-success" style="margin-bottom: 1.5rem;">
+                Scan associato al dipendente ID: {{ request.args.get('employee_id') }}
+            </div>
+            {% endif %}
+            
+            <div class="form-group">
+                <label for="project_dir">Directory del Progetto da Scansionare</label>
+                <input type="text" id="project_dir" name="project_dir" value="." placeholder="Es. /path/to/project o . per directory corrente">
+                <small style="color: var(--text-light);">Lascia "." per scansionare la directory corrente</small>
+            </div>
+            
+            <button type="submit" class="btn">🚀 Avvia Scan Completo</button>
+        </form>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        ℹ️ Cosa fa lo Scan?
+    </div>
+    <div class="card-body">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>🔐 AppSec</h3>
+                <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Rileva secret leak, SQL injection, path traversal, credenziali hardcoded
+                </p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>🇪🇺 EU AI Act</h3>
+                <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Verifica audit logging, gestione PII, human-in-the-loop, trasparenza
+                </p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>⚡ Token Hygiene</h3>
+                <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Analizza prompt bloat e ottimizza consumo token
+                </p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--background); border-radius: 0.5rem;">
+            <strong>📊 Output dello scan:</strong>
+            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                <li>Punteggio di sicurezza (0-100)</li>
+                <li>Lista issue con priorità (Critical/High/Medium/Low)</li>
+                <li>Raccomandazioni per ogni problema</li>
+                <li>Prompt automatico per autoriparazione AI</li>
+                <li>Report salvato in JSON e Markdown</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% if employees %}
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        👥 Scan Rapido per Dipendente
+    </div>
+    <div class="card-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>Dipendente</th>
+                    <th>Dipartimento</th>
+                    <th>Last Scan</th>
+                    <th>Azione</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees[:10] %}
+                <tr>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.department }}</td>
+                    <td>{{ emp.last_scan_date[:10] if emp.last_scan_date else 'Mai' }}</td>
+                    <td>
+                        <a href="/scan?employee_id={{ emp.id }}" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;">
+                            🔍 Scan
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+# SKILL-IACT Dependencies
+# Install with: pip install -r requirements.txt
+
+# Web Framework
+flask>=3.0.0
+
+# Optional: For enhanced functionality
+# python-dotenv>=1.0.0
+# markdown>=3.5.0

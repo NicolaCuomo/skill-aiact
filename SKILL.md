@@ -1,91 +1,68 @@
 ---
 name: "🛡️ EU AI Act & AppSec Compliance Auditor"
-description: "AI Agent specializzato in audit di sicurezza e compliance per progetti AI"
-version: "1.0.0"
+description: "Automated audit kit for Vibe Coders: Security + EU AI Act Compliance + Token Hygiene"
+version: "2.0.0"
+author: "System Integrator Italia"
+language: ["it", "en", "de", "fr", "es"]
 triggers:
-  - "audit ai act"
-  - "security check"
-  - "controllo sicurezza"
-  - "compliance check"
-  - "vulnerability scan"
-  - "appsec audit"
-language: "it/en"
+  it: ["audit ai act", "controllo sicurezza", "verifica conformità", "scan progetto", "audit completo"]
+  en: ["security check", "ai act audit", "compliance scan", "project audit", "vibe coder safety"]
+  de: ["sicherheitscheck", "ai act prüfung", "konformitäts-scan"]
+  fr: ["vérification sécurité", "audit ai act", "scan conformité"]
+  es: ["verificación seguridad", "auditoría ai act", "escaneo conformidad"]
+execution:
+  command: "python3 app.py"
+  cli_audit: "python3 app.py audit --dir ."
+  cli_users: "python3 app.py users --list"
+  cli_scan: "python3 app.py scan --employee <id>"
+  cli_report: "python3 app.py report --generate"
+features:
+  - "EU AI Act Compliance Scanner"
+  - "OWASP AppSec Security Check"
+  - "Employee Training Course"
+  - "PMI Self-Assessment Questionnaire"
+  - "Multi-user Management"
+  - "Massive Employee Results Dashboard"
+  - "Auto-generated Fix Prompts"
+  - "Multilingual Support (IT/EN/DE/FR/ES)"
+output:
+  - "AUDIT_REPORT.md"
+  - "PROMPT_PER_SISTEMARE.txt"
+  - "EMPLOYEE_RESULTS.json"
+  - "PMI_ASSESSMENT.pdf"
 ---
 
-# SKILL-IACT: AI Agent Instructions
+# 🛡️ SKILL-IACT: AI Agent Instructions
 
-## 🎯 Ruolo
-Sei un **AI Auditor** specializzato in AppSec (OWASP) e EU AI Act Compliance.
-Il tuo compito è analizzare progetti software e identificare vulnerabilità e non conformità.
-
-## 🔄 Flusso di Lavoro Black-Box
-
-### Step 1: Esegui l'Audit CLI
-```bash
-python3 scripts/cli.py audit /path/to/project --output REPORT.md
-```
-Questo comando esegue tutti i controlli senza consumare token di contesto.
-
-### Step 2: Analizza i Risultati
-Classifica i finding per gravità:
-- **CRITICAL**: Secret leak, SQL injection, missing audit log
-- **HIGH**: Path traversal, XSS, no human-in-the-loop
-- **MEDIUM**: Prompt bloat, missing risk assessment
-- **LOW**: Token optimization opportunities
-
-### Step 3: Genera Fix Prompt
-Per ogni vulnerabilità Critical/High:
-1. Usa `scripts/cli.py generate-fix` con il report
-2. Incolla il prompt generato nell'AI Developer
-3. Ottieni la patch automatica
-
-### Step 4: Verifica
-Rilancia l'audit per confermare la risoluzione:
-```bash
-python3 scripts/cli.py audit /path/to/project
-```
-
-## ✅ Checklist Obbligatorie
-
-### 🔐 AppSec (OWASP Top 10)
-- [ ] Secret Leak (API key, password, token hardcoded)
-- [ ] SQL Injection (query dinamiche non parametrize)
-- [ ] Path Traversal (accesso file con input utente)
-- [ ] XSS (rendering non sicuro di dati utente)
-- [ ] .env esposti o nel .gitignore
-
-### ⚖️ EU AI Act Compliance
-- [ ] Audit Log (tracciabilità decisioni AI)
-- [ ] PII Handling (gestione dati personali)
-- [ ] Human-in-the-Loop (revisione umana per decisioni critiche)
-- [ ] Risk Assessment (valutazione impatto AI)
-- [ ] Trasparenza Art. 50
-
-### 💰 Token Hygiene
-- [ ] Prompt Bloat (>500 token)
-- [ ] File Optimization (>1k token da splittare)
-- [ ] Contenuti ridondanti
-
-## 📊 Comandi Rapidi
+## Quick Start per AI Agent
+Quando l'utente usa uno dei trigger sopra, esegui:
 
 ```bash
-# Audit completo
-python3 scripts/cli.py audit .
-
-# Solo sicurezza
-python3 scripts/cli.py audit . --checks appsec
-
-# Solo AI Act
-python3 scripts/cli.py audit . --checks aiact
-
-# Output JSON
-python3 scripts/cli.py audit . --format json
-
-# Genera fix prompt
-python3 scripts/cli.py generate-fix REPORT.md
+python3 app.py audit --dir .
 ```
 
-## 📝 Output Atteso
-- Report CLI/Markdown con severity e remediation
-- Prompt markdown pronto per auto-fix
-- Exit code: 0 (clean), 1 (vulnerabilità found)
+## Pattern Black-Box (No Token Waste)
+NON analizzare il codice tu stesso. Usa lo scanner Python che:
+1. Scansiona automaticamente tutti i file
+2. Genera report dettagliati
+3. Crea prompt di auto-riparazione
+
+## Comandi Disponibili
+- `python3 app.py audit --dir .` → Audit completo del progetto
+- `python3 app.py users --add <nome>` → Aggiungi dipendente
+- `python3 app.py users --list` → Lista dipendenti
+- `python3 app.py scan --employee <id>` → Scan singolo dipendente
+- `python3 app.py course --assign <id>` → Assegna corso
+- `python3 app.py questionnaire --start` → Avvia questionario PMI
+- `python3 app.py report --generate` → Genera report consolidato
+- `python3 app.py dashboard` → Avvia UI web
+
+## Output Attesi
+Lo scanner genera:
+- `scans/AUDIT_REPORT.md` - Report leggibile con semafori 🟢🟡🔴
+- `scans/PROMPT_PER_SISTEMARE.txt` - Prompt per autoriparazione AI
+- `data/EMPLOYEE_RESULTS.json` - Risultati dipendenti
+- `data/PMI_ASSESSMENT.json` - Autovalutazione PMI
+
+## Lingue Supportate
+Tutti i report e corsi sono disponibili in: Italiano, English, Deutsch, Français, Español

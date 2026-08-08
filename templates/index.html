@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="margin-bottom: 2rem;">📊 Dashboard</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Totale Dipendenti</h3>
+        <div class="value">{{ stats.total_employees }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Corso Completato</h3>
+        <div class="value">{{ stats.course_completed }} / {{ stats.total_employees }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Questionario Completato</h3>
+        <div class="value">{{ stats.questionnaire_completed }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Scan Totali</h3>
+        <div class="value">{{ stats.total_scans }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Punteggio Medio (30gg)</h3>
+        <div class="value">{{ "%.1f"|format(stats.avg_score_30days) }}/100</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Issue Critiche</h3>
+        <div class="value" style="color: var(--danger);">{{ stats.total_critical }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Issue Alte</h3>
+        <div class="value" style="color: var(--warning);">{{ stats.total_high }}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        🚀 Azioni Rapide
+    </div>
+    <div class="card-body">
+        <a href="/employee/add" class="btn">➕ Aggiungi Dipendente</a>
+        <a href="/scan" class="btn btn-secondary">🔍 Esegui Scan</a>
+        <a href="/course" class="btn btn-success">📚 Avvia Corso</a>
+        <a href="/questionnaire" class="btn btn-warning">📋 Questionario PMI</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        👥 Ultimi Dipendenti Registrati
+    </div>
+    <div class="card-body">
+        {% if employees %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Dipartimento</th>
+                    <th>Corso</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                <tr>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.email }}</td>
+                    <td>{{ emp.department }}</td>
+                    <td>
+                        {% if emp.course_completed %}
+                            <span class="badge badge-success">Completato ✅</span>
+                        {% else %}
+                            <span class="badge badge-warning">Da fare ⏳</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="/employee/{{ emp.id }}" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;">Dettagli</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p style="color: var(--text-light); text-align: center; padding: 2rem;">
+            Nessun dipendente registrato. <a href="/employee/add">Aggiungi il primo!</a>
+        </p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        ℹ️ Informazioni sul Progetto
+    </div>
+    <div class="card-body">
+        <p><strong>SKILL-IACT</strong> è il kit di audit automatico per Vibe Coders e PMI che unisce:</p>
+        <ul style="margin: 1rem 0 1rem 2rem;">
+            <li>🇪🇺 Conformità EU AI Act</li>
+            <li>🔐 Sicurezza AppSec (OWASP)</li>
+            <li>🎓 Formazione dipendenti</li>
+            <li>📋 Autovalutazione PMI</li>
+        </ul>
+        <p style="color: var(--text-light); font-size: 0.875rem;">
+            Disponibile in: Italiano 🇮🇹 | English 🇬🇧 | Deutsch 🇩🇪 | Français 🇫🇷 | Español 🇪🇸
+        </p>
+    </div>
+</div>
+{% endblock %}

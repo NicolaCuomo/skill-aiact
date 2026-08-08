@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="margin-bottom: 2rem;">🎓 Corso di Formazione EU AI Act</h1>
+
+<div class="card">
+    <div class="card-header">
+        📚 Materiale del Corso
+    </div>
+    <div class="card-body">
+        <p style="margin-bottom: 1.5rem;">
+            Il corso copre le <strong>5 Regole d'Oro</strong> per l'uso sicuro e conforme dell'AI in azienda.
+        </p>
+        
+        <div style="background: var(--background); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+            <h3 style="margin-bottom: 1rem;">📖 Argomenti del Corso:</h3>
+            <ol style="margin-left: 1.5rem; line-height: 2;">
+                <li><strong>Regola #1:</strong> MAI inserire dati sensibili nei chatbot AI</li>
+                <li><strong>Regola #2:</strong> L'AI è uno strumento, non un decisore</li>
+                <li><strong>Regola #3:</strong> Trasparenza con i clienti</li>
+                <li><strong>Regola #4:</strong> Proteggi le credenziali aziendali</li>
+                <li><strong>Regola #5:</strong> Documenta l'uso dell'AI</li>
+            </ol>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+            <h4>📄 Scarica il materiale completo:</h4>
+            <a href="/data/CORSO_AI_ACT_DIPENDENTI.md" class="btn btn-secondary" download>
+                📥 Download PDF/Markdown
+            </a>
+        </div>
+        
+        <div class="alert alert-success">
+            <strong>⏱️ Durata:</strong> 15 minuti di lettura + 10 minuti di quiz<br>
+            <strong>🎯 Obiettivo:</strong> Punteggio minimo 4/5 per superare
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        🧪 Quiz Finale
+    </div>
+    <div class="card-body">
+        <p style="margin-bottom: 1.5rem;">
+            Dopo aver studiato il materiale, rispondi alle 5 domande del quiz.
+        </p>
+        
+        <form method="POST" action="/course/complete">
+            <input type="hidden" name="employee_id" value="{{ request.args.get('employee_id', '') }}">
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4>Domanda 1/5</h4>
+                <p><strong>Un cliente ti manda una email con il suo Codice Fiscale. Puoi chiedere a ChatGPT di aiutarti a interpretare una norma fiscale relativa a quel CF?</strong></p>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q1" value="A"> A) Sì, tanto è solo un codice
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q1" value="B"> B) No, mai inserire Codici Fiscali in chatbot AI ✅
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q1" value="C"> C) Solo se anonimizzo le ultime lettere
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q1" value="D"> D) Sì, se il cliente ha dato il consenso
+                </label>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4>Domanda 2/5</h4>
+                <p><strong>Hai usato l'AI per scrivere una email importante da inviare a un cliente. Cosa devi fare prima di inviare?</strong></p>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q2" value="A"> A) Inviare subito, l'AI non sbaglia
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q2" value="B"> B) Leggere, verificare i contenuti e adattare al cliente ✅
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q2" value="C"> C) Farla revisionare dall'AI un'altra volta
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q2" value="D"> D) Chiedere al cliente se accetta email scritte da AI
+                </label>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4>Domanda 3/5</h4>
+                <p><strong>Quale di questi elementi PUOI condividere con un chatbot AI?</strong></p>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q3" value="A"> A) Il nome del tuo responsabile
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q3" value="B"> B) Il fatturato annuale della tua azienda
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q3" value="C"> C) Una descrizione generica di un problema tecnico (senza dati specifici) ✅
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q3" value="D"> D) L'indirizzo email di un fornitore
+                </label>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4>Domanda 4/5</h4>
+                <p><strong>Secondo l'EU AI Act, cosa significa "Human-in-the-Loop"?</strong></p>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q4" value="A"> A) Che l'AI lavora in circolo chiuso
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q4" value="B"> B) Che un umano deve sempre supervisionare le decisioni importanti dell'AI ✅
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q4" value="C"> C) Che l'AI può sostituire completamente gli umani
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q4" value="D"> D) Che gli umani devono stare in piedi mentre usano l'AI
+                </label>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4>Domanda 5/5</h4>
+                <p><strong>Hai accidentalmente incollato una password in ChatGPT. Cosa devi fare?</strong></p>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q5" value="A"> A) Nulla, tanto nessuno lo sa
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q5" value="B"> B) Chiudere la chat e continuare a lavorare
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q5" value="C"> C) Segnalare immediatamente, cambiare la password e documentare l'incidente ✅
+                </label>
+                <label style="display: block; margin: 0.5rem 0;">
+                    <input type="radio" name="q5" value="D"> D) Cancellare la cronologia del browser
+                </label>
+            </div>
+            
+            <button type="submit" class="btn btn-success">✅ Invia Risposte</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

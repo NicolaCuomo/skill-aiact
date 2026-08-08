@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="margin-bottom: 2rem;">📄 Report Salvati</h1>
+
+<div class="card">
+    <div class="card-header">
+        📊 Storico Scan (Ultimi 50)
+    </div>
+    <div class="card-body">
+        {% if reports %}
+        <table>
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Data/Timestamp</th>
+                    <th>Punteggio</th>
+                    <th>Issue Totali</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td><code>{{ report.filename }}</code></td>
+                    <td>{{ report.timestamp[:16] if report.timestamp else 'N/A' | replace('T', ' ') }}</td>
+                    <td>
+                        {% set score = report.score %}
+                        {% if score >= 80 %}
+                            <span class="badge badge-success">{{ score }}/100</span>
+                        {% elif score >= 60 %}
+                            <span class="badge badge-warning">{{ score }}/100</span>
+                        {% else %}
+                            <span class="badge badge-danger">{{ score }}/100</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ report.issues }}</td>
+                    <td>
+                        <a href="/scans/{{ report.filename }}" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" download>
+                            📥 Download
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div style="text-align: center; padding: 3rem;">
+            <p style="color: var(--text-light); margin-bottom: 1rem;">Nessun report salvato</p>
+            <a href="/scan" class="btn">🔍 Esegui il primo scan</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+        ℹ️ Informazioni sui Report
+    </div>
+    <div class="card-body">
+        <p>I report vengono salvati automaticamente nella directory <code>scans/</code> in formato JSON.</p>
+        
+        <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+            <li><strong>Formato:</strong> JSON strutturato</li>
+            <li><strong>Contenuto:</strong> Punteggi, issue dettagliate, raccomandazioni</li>
+            <li><strong>Conservazione:</strong> Ultimi 50 scan</li>
+            <li><strong>Utilizzo:</strong> Scarica e analizza con strumenti esterni o condividi con il team</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
