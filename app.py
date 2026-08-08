@@ -4,9 +4,14 @@
 🛡️ SKILL-IACT: EU AI Act & AppSec Compliance Auditor
 Application principale con Flask UI + CLI + Audit Engine
 
-Author: System Integrator Italia
+Created by: Qwen (Alibaba Cloud) & Nicola Cuomo
+Branding: Antigravity Night Powered by Nicola Cuomo
 License: MIT
 Version: 2.0.0
+
+⚠️ DISCLAIMER: This tool is NOT legal certification.
+It's an internal aid based on AI research for helping SMEs and Vibe Coders.
+Do not use as substitute for professional legal advice.
 """
 
 import os

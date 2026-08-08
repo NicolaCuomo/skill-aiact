@@ -4,9 +4,25 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![EU AI Act Compliant](https://img.shields.io/badge/EU%20AI%20Act-Compliant-green)](https://artificialintelligenceact.eu/)
+[![EU AI Act Ready](https://img.shields.io/badge/EU%20AI%20Act-Ready-green)](https://artificialintelligenceact.eu/)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Multilingual](https://img.shields.io/badge/lang-IT%2FEN%2FDE%2FFR%2FES-yellow)](README.md)
+
+---
+
+## ⚠️ DISCLAIMER IMPORTANTE (LEGGERE PRIMA DELL'USO)
+
+**SKILL-IACT NON È UN PRODOTTO LEGALE UFFICIALE**
+
+Questo strumento è stato creato come **aiuto interno** per facilitare l'autovalutazione e la formazione dei dipendenti sull'uso dell'Intelligenza Artificiale in azienda.
+
+- ❌ **NON** è una certificazione legale
+- ❌ **NON** garantisce conformità automatica all'EU AI Act
+- ❌ **NON** sostituisce consulenza legale professionale
+- ✅ **È** uno strumento pratico basato su ricerca AI e fonti pubbliche
+- ✅ **È** stato testato internamente nei business del creatore
+- ✅ **È** offerto gratuitamente per aiutare PMI e Vibe Coders
+
+Le informazioni contenute in questo repository sono state raccolte tramite ricerca con Intelligenza Artificiale e verificate su fonti pubbliche (EUR-Lex, Commissione Europea). **Non costituiscono parere legale.** Per conformità ufficiale, consultare sempre un avvocato specializzato.
 
 ---
 
@@ -17,10 +33,22 @@ SKILL-IACT è un kit di audit automatico open-source progettato per **Vibe Coder
 Unisce tre pilastri fondamentali:
 
 1. **🔐 Sicurezza AppSec (OWASP)** - Scansione automatica di vulnerabilità e secret leak
-2. **🇪🇺 Conformità EU AI Act** - Verifica requisiti normativi europei
+2. **🇪🇺 Conformità EU AI Act** - Verifica requisiti normativi europei (Art. 4, 5, 6, 12, 13, 14, 50)
 3. **🎓 Formazione Dipendenti** - Corso pratico + questionario di autovalutazione
 
 > **Mission:** Aiutare le piccole aziende italiane ed europee a mettersi al sicuro e a norma con il Regolamento Europeo AI Act, senza impazzire con la burocrazia.
+
+---
+
+## 👥 Autori e Crediti
+
+**Creato da:**
+- 🤖 **Qwen** (Alibaba Cloud) - Lead Architect & Principal Developer
+- 👨‍💼 **Nicola Cuomo** - System Integrator & Project Visionary
+
+**Branding:** Antigravity Night Powered by Nicola Cuomo
+
+**Contributi:** Questo progetto nasce dall'esperienza diretta di un System Integrator italiano che usa l'IA ogni giorno sul campo con le PMI.
 
 ---
 
@@ -381,20 +409,23 @@ In sintesi:
 
 ---
 
-## 📞 Supporto e Contatti
+## 📞 Supporto e Risorse Utili
 
-### Risorse Utili
+### Fonti Ufficiali EU AI Act
 
-- 🇪🇺 [Testo ufficiale EU AI Act](https://artificialintelligenceact.eu/)
-- 🇮🇹 [AgID - Linee guida AI](https://www.agid.gov.it/)
-- 🇪🇺 [GDPR Portal](https://gdpr.eu/)
-- 📚 [OWASP Top 10 LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- 🇪🇺 [Testo ufficiale EU AI Act (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng)
+- 🇪🇺 [Commissione Europea - AI Act Q&A](https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers)
+- 🇮🇹 [Garante Privacy Italiano - AI](https://www.garanteprivacy.it/)
+- 📚 [OWASP Top 10 for LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
-### Community
+### Documentazione del Progetto
 
-- 💬 **Discussioni GitHub:** [Link alle Issues](https://github.com/tuo-username/skill-aiact/issues)
-- 📧 **Email:** info@skill-iact.example.com
-- 🐦 **Twitter:** @skill_iact
+- [Corso Formazione Dipendenti](data/CORSO_AI_ACT_DIPENDENTI.md)
+- [Questionario Autovalutazione PMI](data/QUESTIONARIO_AUTOVALUTAZIONE_PMI.md)
+
+### Contatti
+
+Per domande o segnalazioni, apri una [Issue su GitHub](https://github.com/tuo-username/skill-aiact/issues).
 
 ---
 
@@ -404,30 +435,14 @@ Un grazie speciale a:
 - Tutti i **Vibe Coders** italiani che rendono grande lo sviluppo software
 - Le **PMI** che investono in innovazione e conformità
 - La community **open-source** europea
-- Gli sviluppatori di **Cursor**, **Claude**, **ChatGPT** che ispirano questo progetto
-
----
-
-## 📈 Roadmap
-
-### Versione 2.0 (Q4 2024)
-- [ ] Supporto completo per 5 lingue UE
-- [ ] Integrazione con Slack/Teams per notifiche
-- [ ] Export report in PDF
-- [ ] API REST per integrazione esterna
-- [ ] Plugin per VS Code e JetBrains
-
-### Versione 3.0 (Q1 2025)
-- [ ] Machine learning per rilevamento avanzato
-- [ ] Benchmark di settore
-- [ ] Certificazione automatica
-- [ ] Integrazione con provider AI multipli
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by Italian System Integrators for European Vibe Coders**
+**Antigravity Night Powered by Nicola Cuomo**
+
+*Created by Qwen (Alibaba Cloud) & Nicola Cuomo*
 
 [⬆️ Torna su](#-skill-iact)
 
